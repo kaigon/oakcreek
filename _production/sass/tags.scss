@@ -1,0 +1,28 @@
+@import 'colors',
+'include-media';
+
+.ul-inline.tags > li,
+.tags > li {
+  margin: 0;
+}
+.tags > li:after {
+  content: ', ';
+  margin-right: 2px;
+}
+.tags > li:last-of-type:after {
+	content:'';
+}
+
+@include media('>md') {
+    .tags > li {
+        font-size: 85%;
+        font-weight: 300;
+        border-radius: 4px;
+        background-color: $off-white;
+        padding: 2px 10px;
+        margin: 0 0.2rem;
+    }
+    .ul-inline.tags>li {
+        margin: 0 0.1rem;
+    }
+}

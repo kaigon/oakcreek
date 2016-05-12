@@ -1,0 +1,156 @@
+@import 'colors',
+'include-media';
+body {
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-style: normal;
+    //font-size: 18.4px;
+    font-size: 1.15em;
+    line-height: 1.438;
+    font-weight: 400;
+    color: $tan;
+    text-transform: none;
+    @include media(">sm") {
+        font-size: 1.2em;
+        line-height: 1.529;
+    }
+    @include media(">md") {
+        font-size: 1.25em;
+        line-height: 1.556;
+    }
+    @include media(">lg") {
+        font-size: 1.3rem;
+        line-height: 1.350;
+    }
+}
+
+strong {
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 300;
+    line-height: inherit;
+    margin: 0 0 0.5rem;
+    vertical-align: top;
+    font-style: normal;
+}
+
+h1 {
+    //font-size: 200%;
+    font-size: 3.375em;
+    line-height: 1.1;
+    letter-spacing: -0.01vw;
+    &:after {
+        content: '';
+        display: block;
+        width: 20%;
+        height: 6px;
+        background-color: $off-green;
+        margin: 1.4rem 0;
+    }
+}
+
+h2 {
+    //font-size: 150%;
+    font-size: 2.250em;
+    line-height: 1.1;
+    &:after {
+        content: '';
+        display: block;
+        width: 20%;
+        height: 4px;
+        background-color: $brown;
+        margin: 1.4rem 0;
+        max-width: 80px;
+    }
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+h4 {
+    //font-size: 120%;
+    font-size: 1.219em;
+}
+
+h5 {
+    //font-size: 110%;
+    font-size: 1.094em;
+}
+
+li,
+p,
+q {
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+p,
+q {
+    margin: 0 0 0.75rem;
+}
+
+li {
+    margin: 0 0 1.25rem;
+}
+
+ul {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 1.2rem;
+}
+
+
+/*
+@include media(">sm") {
+    body {
+        font-size: 1.1rem;
+        line-height: 1.529;
+    }
+    h1 {
+        font-size: 260%;
+    }
+}
+
+@include media(">md") {
+    body {
+        font-size: 1.2rem;
+        line-height: 1.556;
+    }
+    h1 {
+        font-size: 320%;
+        letter-spacing: -1px;
+    }
+    h2 {
+        letter-spacing: -1px;
+        font-size: 180%;
+    }
+    .hero h3 {
+        font-size: 140%;
+    }
+    h4 {
+        letter-spacing: -0.5px;
+    }
+    
+}
+
+@include media(">lg") {
+    body {
+        font-size: 1.3rem;
+        line-height: 1.350;
+    }
+}
+
+*/

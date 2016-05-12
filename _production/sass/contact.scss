@@ -1,0 +1,92 @@
+@import 'colors',
+'include-media';
+.contact {
+    padding-bottom: 0;
+    header.container-fluid {
+        padding-bottom: 0;
+    }
+    h2 {
+        color: $light-teal;
+        span {
+            display: block;
+        }
+    }
+    h3 {
+        margin-bottom: 2rem;
+    }
+    a,
+    a:link,
+    a:visited {
+        color: $light-teal;
+    }
+    @include media('<sm') {
+        a {
+            font-size: 16px;
+        }
+    }
+    li {
+        padding-left: 30px;
+        position: relative;
+        i {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
+    }
+    @include media('>sm') {
+        li {
+            padding-left: 40px;
+            i {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+    .btn[type="submit"] {
+        background-color: $bright-green;
+        margin-bottom: 4rem;
+        color:$dark_green;
+        font-weight:400;
+        /*
+        box-shadow: 0 0 0 0 $bright-green;
+        &:hover {
+            box-shadow: 0 0 0 4px $bright-green;
+        }
+        */
+    }
+    @include media ('>md') {
+        .btn[type="submit"] {
+            margin-bottom: 0;
+        }
+    }
+    footer {
+        @include media('<sm'){
+            .container-fluid {
+                padding:0;
+            }
+        }
+        p {
+            display: none;
+        }
+        @include media('>sm') {
+            p {
+                display: inline-block;
+            }
+        }
+        i[class*="icon-"] {
+            position: absolute;
+        }
+        @include media('<sm') {
+            .embed-container_ar100 {
+                padding-bottom: 60%;
+            }
+        }
+    }
+    .icon-tree {
+        background-position: 156% 105%;
+        background-size: 64%;
+    }
+}

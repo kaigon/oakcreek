@@ -1,0 +1,88 @@
+@import 'colors',
+'include-media';
+.btn-icon {
+    background-color: $brown;
+    border-radius: 100px;
+    box-shadow: 0 0 0 0 $brown;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: all 300ms ease;
+    display: block;
+    padding: 0.4rem 1.2rem;
+    &:hover:after {
+        width: 0;
+    }
+    span {
+        transition: inherit;
+        display: block;
+    }
+    [class*="icon-"] {
+        display: block;
+        position: absolute;
+        margin: 0 auto;
+        transition: inherit;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: 2rem 1.6rem;
+    }
+    &.btn-sm [class*="icon-"] {
+        background-size: 2rem 1.2rem;
+    }
+    &:hover {
+        transform: scale(1.05);
+    }
+    &.btn-sm:hover {
+        transform: scale(1.1);
+    }
+    &.btn-icon_u {
+        [class*="icon-"] {
+            transform: translateY(100%);
+            top: 50%;
+            left: 0;
+            right: 0;
+        }
+        &:not(.disabled):hover {
+            [class*="icon-"] {
+                transform: translateY(-50%);
+            }
+            span {
+                transform: translateY(-150%);
+            }
+        }
+    }
+    &.btn-icon_d {
+        [class*="icon-"] {
+            transform: translateY(-150%);
+            top: 50%;
+            left: 0;
+            right: 0;
+        }
+        &:not(.disabled):hover {
+            [class*="icon-"] {
+                transform: translateY(-50%);
+            }
+            span {
+                transform: translateY(150%);
+            }
+        }
+    }
+    &.btn-icon_l {
+        [class*="icon-"] {
+            left: 150%;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &:not(.disabled):hover {
+            [class*="icon-"] {
+                transform: translate(-150%, -50%);
+            }
+            span {
+                transform: translateX(-240%);
+            }
+        }
+    }
+    &.btn-icon_r {}
+}

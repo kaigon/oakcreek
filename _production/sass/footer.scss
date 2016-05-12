@@ -1,0 +1,37 @@
+@import 'colors',
+'include-media';
+.footer {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.footer > footer {
+    background-color: $dark-brown;
+    border-bottom: 4px solid $light-green;
+    position: relative;
+    color: $white;
+}
+
+.footer > footer p {
+    margin: 1.4rem 0;
+    padding: 0;
+    display: inline-block;
+    font-weight: 300;
+}
+
+.footer > footer p > span {
+  display: inline-block;
+}
+
+
+@include media('>sm') {
+    .footer > footer p > strong {
+        margin: 0 1rem 0 0.75rem;
+    }
+}
+
+@include media('<sm') {
+    .footer > footer p {
+        font-size: 14px;
+    }
+}

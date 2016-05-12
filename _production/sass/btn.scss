@@ -1,0 +1,58 @@
+@import 'colors',
+'include-media';
+.btn {
+    margin-bottom: 0;
+    font-weight: 300;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 2px solid transparent;
+    display: inline-block;
+    text-align: center;
+    transition: all .4s;
+    position: relative;
+    border-radius: 25rem;
+    font-style: normal;
+    color: $white;
+    background-color: $brown;
+    padding: 0.6rem 1.2rem 0.7rem;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0 0 $brown;
+    margin-left: 1px;
+    -webkit-font-smoothing: antialiasing;
+    &.btn-sm {
+        font-size: 1.1rem;
+        padding: 0.4rem 1.2rem;
+    }
+    @include media('>sm') {
+        & {
+            font-size: 1.5rem;
+            padding: 0.8rem 3rem;
+            &.btn-sm {
+                font-size: 1.2rem;
+                padding: 0.4rem 2rem;
+            }
+        }
+    }
+}
+
+// hover
+.btn-invert {
+    background: transparent;
+    border: 2px solid $green;
+    color: $green;
+}
+
+.btn-trans {
+    background: transparent;
+    color: inherit;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}

@@ -1,0 +1,22 @@
+@import 'colors',
+'include-media';
+.hidden-xs {
+	@include media('<sm'){
+		display:none!important;	
+	}
+}
+.hidden-sm {
+	@include media('>=sm','<md'){
+		display:none!important;	
+	}
+}
+.hidden-md {
+	@include media('>=md','<lg'){
+		display:none!important;	
+	}
+}
+.hidden-lg {
+	@include media('<=lg'){
+		display:none!important;	
+	}
+}

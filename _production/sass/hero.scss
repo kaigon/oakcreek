@@ -1,0 +1,131 @@
+@import 'colors',
+'include-media';
+.hero {
+    background-color: $dark_green;
+    position: relative;
+    background-image: url(img/bg_hero.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        left: 0;
+        background-color: #212D00;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        opacity: 0.75;
+    }
+    h1 {
+        color: $yellow;
+        /*
+        @include-media(min-height: 800px) and (min-width: >'md') {
+            font-size: calc(100% + 8vh);
+        }
+        */
+        > span {
+            display: block;
+        }
+    }
+    h3 {
+        color: $bright_tan;
+        > span {
+            display: inline-block;
+        }
+    }
+    > .container-fluid {
+        position: relative;
+        z-index: 2;
+        padding-top: 150px;
+    }
+    .btn {
+        background-color: $dark_teal;
+        padding-left: 2rem;
+        padding-right: calc(2rem + 19px + 6px); // 19px is approximate width of icon on mobile, + 6px for margin-right on icon
+        margin-top: 1rem;
+        box-shadow: -1px 1px 0 0 rgba($teal, 0.45);
+        @include media('>sm'){
+            padding-right:calc(2rem + 24px + 6px); // 24px is approximate width of icon on desktop, + 6px for margin-right on icon
+        }
+        em {
+            font-style: normal;
+        }
+        [class*="icon-"] {
+            transition: inherit;
+            height: 13.5px;
+            margin-right: 6px;
+            display: inline-block;
+            width: 100%;
+            @include media('>sm') {
+                height: 16.5px;
+            }
+        }
+        span {
+            display: inline-block;
+            transition: inherit;
+            transform: translateX(calc(-100% + 19px)); // 19px is approximate width of icon on mobile
+            @include media('>sm') {
+                transform: translateX(calc(-100% + 24px)); // 24px is approximate width of icon on desktop
+            }
+        }
+        &:hover {
+            padding-left: calc(2rem + 2%);
+            padding-right: calc(2rem + 19px + 6px + 2%);
+            box-shadow: 0 0 0 6px $dark_teal;
+            [class*="icon-"] {
+                transform: translateX(calc(100% + 6px));
+            }
+            span {
+                transform: translateX(calc(-100% - 19px + 6px)); 
+                @include media('>sm') {
+                    transform: translateX(calc(-100% - 24px + 6px)); 
+                }
+            }
+        }
+    }
+    > svg {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: auto;
+        width: 100%;
+        transform: translateY(-50%);
+        opacity: 0;
+        z-index: 1;
+    }
+}
+
+@include media(">sm") {
+    .hero {
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 150%;
+        &:before {
+            display: none;
+        }
+        > .container-fluid {
+            padding-top: 240px;
+            > .row {
+                min-height: calc(100vh - 240px);
+                padding-bottom: calc(6rem + 10vh);
+            }
+        }
+        h1 {
+            letter-spacing: -3px;
+            margin-bottom: 0.5rem;
+            &:after {
+                margin: 2rem 0 1.4rem;
+            }
+        }
+        > svg {
+            min-height: 100vh;
+            height: 100%;
+            opacity: 0.89;
+        }
+    }
+}

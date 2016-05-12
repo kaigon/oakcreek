@@ -1,0 +1,246 @@
+@import 'colors',
+'include-media';
+.modal.on .modal_upload {
+    display: block;
+}
+
+.modal_upload {
+    text-align: center;
+    color: $tan;
+    max-width: 760px;
+    font-size: 80%;
+    display: none;
+    > .box {
+        width: 400%;
+        position: relative;
+        transition: all 500ms ease;
+        transform: translateY(0%);
+        > [class^="box-"] {
+            transition: all 500ms ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        > .box-1 {
+            opacity: 1;
+            visibility: visible;
+        }
+        &.slide-2 {
+            transform: translateX(-25%);
+            > .box-1,
+            > .box-3,
+            > .box-4 {
+                opacity: 0;
+                visibility: hidden;
+            }
+            > .box-2 {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &.slide-3 {
+            transform: translateX(-50%);
+            > .box-1,
+            > .box-2,
+            > .box-4 {
+                opacity: 0;
+                visibility: hidden;
+            }
+            > .box-3 {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &.slide-4 {
+            transform: translateX(-75%);
+            > .box-1,
+            > .box-2,
+            > .box-3 {
+                opacity: 0;
+                visibility: hidden;
+            }
+            > .box-4 {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        .box-content {
+            /*max-width: 440px;*/
+            margin: 0 auto;
+        }
+    }
+    .radials {
+        margin: 3rem 0 2rem -1rem;
+        display: inline-block;
+    }
+    fieldset {
+        margin: 1.4rem auto 2rem;
+        padding: 0;
+        &:last-of-type {
+            margin-bottom: 1.4rem;
+        }
+        label {
+            display: block;
+            max-width: 300px;
+            margin: 0 auto 0.5rem;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            input[type="text"],
+            input[type="tel"] {
+                background-color: $off-white;
+                border: 1px solid #D3D3D3;
+                border-radius: 2px;
+            }
+        }
+    }
+    textarea {
+        background-color: $off-white;
+        border: 1px solid #D3D3D3;
+        border-radius: 2px;
+        min-height: 20vh;
+        margin: 1.5rem auto;
+    }
+    .g-recaptcha > div > div {
+        margin: 0 auto;
+    }
+    h1 {
+        color: $dark-tan;
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+        &:after {
+            display: none;
+        }
+        @include media('>md') {
+            > span {
+                font-size: 90%;
+            }
+        }
+    }
+    h5 {
+        margin-bottom: 3px;
+    }
+    h2 {
+        margin-bottom: 2rem;
+        &:after {
+            display: none;
+        }
+        label {
+            color: $light-teal;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+    .box-1 h2 {
+        margin-bottom: 1rem;
+    }
+    p {
+        line-height: 1.2rem;
+    }
+    article ~ p {
+        max-width: 400px;
+        margin: 0 auto 1.5rem;
+    }
+    small {
+        font-weight: 300;
+    }
+    .icon-upload {
+        border-radius: 50%;
+        background-color: $off-white;
+        border-color: #BABA9D;
+        border-style: dashed;
+        border-width: 3px;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-size: inherit;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 2rem auto 1.6rem;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 500ms ease;
+        > input {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: -100%;
+            top: 0;
+        }
+    }
+    .btn[modal-slide-button] {
+        overflow: hidden;
+        &:hover {
+            background-color: $brown;
+        }
+        &.disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+    }
+    .btn[type="submit"] {
+        background-color: $teal;
+    }
+    .files > li {
+        text-align: left;
+        padding-left: 3.4em;
+        position: relative;
+        line-height: 1.4rem;
+        padding-top: 1.4rem;
+        padding-bottom: 1.8rem;
+        border-bottom: 1px solid #BABA9D;
+        margin: 0;
+        .close-button {
+            position: absolute;
+            right: 0;
+            top: 1.4rem;
+            z-index: 2;
+            width: 30px;
+            padding: 0;
+            &:hover {
+                transform: rotateY(180deg);
+            }
+        }
+        &:last-of-type {
+            border-bottom: 0;
+            margin-bottom: 1.4rem;
+        }
+        &:first-of-type {
+            padding-top: 0;
+            .close-button {
+                top: 0;
+            }
+        }
+        span {
+            text-overflow: ellipsis;
+            width: calc(100% - 30px);
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        > i[class^="icon-"] {
+            width: 3em;
+            height: 3em;
+            position: absolute;
+            left: 0;
+            background-size: contain;
+        }
+    }
+}
+
+.modal.dragging {
+    background-color: $dark-teal;
+    h1 {
+        color: $light-teal;
+    }
+    .icon-upload {
+        background-color: $teal;
+    }
+    .close-button:after {
+        background-color: $teal;
+    }
+    .close-button:before {
+        background-color: $teal;
+    }
+}

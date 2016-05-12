@@ -1,0 +1,40 @@
+@import 'colors',
+'include-media';
+.ul-inline > li {
+	display:inline-block;
+	margin:0 0.5rem;
+	&:first-of-type {
+		margin-left:0;
+	}
+	&:last-of-type {
+		margin-right:0;
+	}
+}
+.ul-list,
+.ul-inline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.radials {
+	margin:1rem auto;
+	> li {
+		border:3px solid $light-tan;	
+		border-radius:50%;
+		width:16px;
+		height:16px;
+		cursor:pointer;
+		&.active {
+			border-color:transparent;
+			background: $light-tan;
+			cursor:default;
+		}
+		&.disabled {
+			opacity:0.5;
+			cursor: no-drop;
+		}
+	}
+
+	
+
+}

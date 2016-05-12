@@ -1,0 +1,90 @@
+@import 'colors',
+'include-media';
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y:visible;
+    transition: overflow-y 0ms ease 2000ms;
+}
+
+figure {
+    margin: 0;
+}
+
+button {
+    outline:none;
+}
+
+a,
+.btn-trans.btn-link {
+    text-decoration: none;
+    color: $bright-tan;
+    &:link {
+        color: $bright-tan;
+    }
+    &:visited {
+        color: $bright-tan;
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background-color: $bright-green;
+        transition: all 400ms ease;
+    }
+    &:hover:after {
+        width: 100%;
+    }
+}
+a {display: inline-block;}
+
+i {
+    font-style: normal;
+    text-indent: -1000em;
+    display: inline-block;
+    background-size: contain;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container-fluid {
+    max-width: 86rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+@include media(">sm") {
+    .container-fluid {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+    header.container-fluid {
+        padding-bottom: 4rem;
+    }
+}
+
+section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+@include media(">md") {
+    section {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+}

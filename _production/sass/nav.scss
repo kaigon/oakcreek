@@ -1,0 +1,260 @@
+@import 'colors',
+'include-media';
+.nav-popout {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    z-index: 100;
+    .nav-menu {
+        position: fixed;
+        right: 1rem;
+        top: 0.75rem;
+        z-index: 1000;
+        cursor: pointer;
+        width: 2.4rem;
+        height: 2.2rem;
+        color: $light_tan;
+        text-align: center;
+        font-size: 11px;
+        transition: top 400ms ease;
+        .icon-menu {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            left: 0;
+            right: 0;
+            > svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                right: 0;
+                width: inherit;
+                height: inherit;
+                margin: auto;
+                text-align: center;
+                path {
+                    fill: inherit;
+                }
+            }
+        }
+        span {
+            font-size: inherit;
+            position: absolute;
+            top: 1.75rem;
+            width: 100%;
+            text-align: center;
+            color: inherit;
+            font-weight: 500;
+            left: 0;
+            right: 0;
+            letter-spacing: -0.25px;
+        }
+        .close-button {
+            top: inherit;
+        }
+        @include media('>sm') {
+            width: 3rem;
+            height: 2.8rem;
+            font-size: 14px;
+            span {
+                top: 2rem;
+            }
+        }
+    }
+    nav {
+        position: fixed;
+        //right: 0;
+        left:100%;
+        top: 0;
+        transform: translate3d(0, 0, 0);
+        transition: transform .25s ease-out;
+        background: $dark_teal;
+        width: 300px;
+        height: 100%;
+        padding: 50px 30px;
+        display: table;
+        text-align: center;
+        border-left: 3px solid $bright_green;
+        //box-shadow: -3px 0 0 0 $off_green, -6px 0 0 0 $green;
+        //background: lighten($bright_tan, 0.8);
+    }
+    a {
+        cursor: pointer;
+        font-weight: 400;
+        //color: $tan;
+        display: table-row;
+        .icon-email_solid {
+            width: 1rem;
+            height: 1rem;
+            vertical-align: middle;
+        }
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
+    }
+    li {
+        list-style: none;
+        display: block;
+        transform: translate3d(40px, 0, 0);
+        opacity: 0;
+        transition: all .4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        margin: 15px 0;
+    }
+    &.open {
+        .nav-menu span,
+        .icon-menu svg {
+            opacity: 0;
+        }
+        .close-button {
+            opacity: 1;
+            visibility: visible;
+            &:after,
+            &:before {
+                background-color: $bright_tan;
+            }
+        }
+        nav {
+            transform: translate3d(-100%, 0, 0);
+            transition: all .4s ease;
+        }
+        li {
+            transform: translateY(0);
+            opacity: 1;
+            &:nth-child(1) {
+                transition-delay: 200ms;
+            }
+            &:nth-child(2) {
+                transition-delay: 300ms;
+            }
+            &:nth-child(3) {
+                transition-delay: 400ms;
+            }
+            &:nth-child(4) {
+                transition-delay: 500ms;
+            }
+            &:nth-child(5) {
+                transition-delay: 600ms;
+            }
+            &:nth-child(6) {
+                transition-delay: 700ms;
+            }
+        }
+    }
+    @include media(">lg") {
+        &.full {
+            position: relative;
+            height: auto;
+            left: initial;
+            top: initial;
+            .nav-menu {
+                top: -10rem;
+            }
+            nav {
+                text-align: right;
+                display: block;
+                color: white;
+                position: relative;
+                left: initial;
+                top: initial;
+                width: 100%;
+                height: auto;
+                padding: 0;
+                border: 0;
+                transform: none;
+                background: transparent;
+            }
+            ul {
+                text-align: right;
+                display: block;
+            }
+            li {
+                margin: 0 1.8rem 0 0;
+                opacity: 1;
+                transform: none;
+                display: inline-block;
+                vertical-align: middle;
+                &:last-of-type {
+                    margin-right: 0;
+                    a {
+                        background-color: $brown;
+                        border-radius: 100px;
+                        box-shadow: 0 0 0 0 $brown;
+                        position: relative;
+                        text-align: center;
+                        overflow: hidden;
+                        transition: all 300ms ease;
+                        display: block;
+                        padding: 0.4rem 1.2rem;
+                        &:hover:after {
+                            width: 0;
+                        }
+                        .icon-email_solid {
+                            display: block;
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            margin: 0 auto;
+                            transform: translateY(-250%);
+                            transition: all 300ms ease;
+                            top: 50%;
+                            width: 1.4rem;
+                            height: 1rem;
+                        }
+                        span {
+                            display: block;
+                            transition: all 300ms ease;
+                        }
+                        &:hover {
+                            background-color: $yellow;
+                            .icon-email_solid {
+                                transform: translateY(-50%);
+                            }
+                            span {
+                                transform: translateY(200%);
+                            }
+                        }
+                    }
+                }
+            }
+            a {
+                text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+}
+
+[data-viewing="hero"],
+[data-viewing="guidelines"] {
+    .nav-menu {
+        color: rgba($bright_tan, 0.8);
+        svg {
+            fill: $bright_tan;
+        }
+    }
+}
+
+[data-viewing="services"],
+[data-viewing="customers"],
+[data-viewing="about"],
+[data-viewing="contact"] {
+    .nav-menu {
+        color: $dark_tan;
+        svg {
+            fill: $dark_teal;
+        }
+    }
+}
+
+[data-viewing="services"] nav [data-scrollto="services"]{ color:$bright_green; }
+[data-viewing="customers"] nav [data-scrollto="customers"]{ color:$bright_green; }
+[data-viewing="guidelines"] nav [data-scrollto="guidelines"]{ color:$bright_green; }
+[data-viewing="about"] nav [data-scrollto="about"]{ color:$bright_green; }
+[data-viewing="contact"] nav [data-scrollto="contact"]{ color:$bright_green; }

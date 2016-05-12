@@ -1,0 +1,151 @@
+@import 'colors',
+'include-media';
+.guidelines {
+    background: url(img/bg_guidelines.jpg) no-repeat center top $dark-brown;
+    color: $light-tan;
+    background-size: contain;
+    position: relative;
+    padding-bottom: calc(6rem + 20px);
+    h2 {
+        color: $bright-tan;
+    }
+    @include media('>sm') {
+        h2 {
+            margin-bottom: 1.4rem;
+        }
+    }
+    article h2:after {
+        display: none;
+    }
+    @include media('>sm') {
+        article {
+            display: block;
+        }
+    }
+    main {
+        @include media('<sm') {
+            button {
+                display: block;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid;
+                border-radius: 0;
+                font-size: 1.4rem;
+            }
+            button:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                transform: rotate(45deg);
+                display: inline-block;
+                border-bottom: 2px solid $bright-teal;
+                border-right: 2px solid $bright-teal;
+                position: relative;
+                top: -3.5px;
+                margin-right: 10px;
+            }
+            button.expanded {
+                color: $white;
+            }
+            button.expanded:before {
+                border-color: $white;
+            }
+        }
+        button {
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            color: $off-green;
+            display: block;
+            outline: none;
+        }
+        button:hover {
+            color: $white;
+        }
+        @include media('>sm') {
+            button.active {
+                color: $bright-tan;
+                cursor: default;
+            }
+            button.active:before {
+                content: '\27a8';
+                position: absolute;
+                left: -40px;
+                font-size: 1.7rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $light-teal;
+            }
+        }
+        button ~ p {
+            margin-top: 2rem;
+        }
+    }
+    li>aside {
+        color: $off-green;
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    @include media('>sm') {
+        footer {
+            text-align: center;
+        }
+    }
+    footer {
+        h3 {
+            margin: 3rem auto 2rem;
+            color: $bright-tan;
+        }
+        .btn {
+            margin: 0 0.5rem;
+            background: $light-brown;
+            outline: none;
+            box-shadow: 0 0 0 0 $light-brown;
+            &:hover:not(.btn-invert) {
+                box-shadow: 0 0 0 4px $light-brown;
+            }
+        }
+        @include media('<sm') {
+            .btn {
+                font-size: 16px;
+                margin: 0 0.5rem 12px 0;
+                display: inline-block;
+            }
+        }
+        .btn-invert {
+            color: $white;
+            border-color: $light-brown;
+            background: transparent;
+        }
+    }
+    p > .btn {
+        padding-left: 40px;
+    }
+    p > .btn > i {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.guidelines_articles {
+    display: none;
+}
+
+.guidelines article {
+    display: none;
+}
+
+@include media('>sm') {
+    .guidelines {
+        padding-bottom: calc(10rem + 32px);
+    }
+    .guidelines_articles {
+        display: block;
+    }
+    .guidelines_buttons > article {
+        display: none!important;
+    }
+}

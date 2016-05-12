@@ -1,0 +1,56 @@
+@import 'colors',
+'include-media';
+.customers {
+    background: $bright-tan;
+    text-align: left;
+    h2 {
+        margin-bottom:4rem;
+        @include media('>sm'){
+            margin-bottom:6rem;
+        }
+        &:after {
+            display: none;
+        }
+    }
+    h3 {
+        margin: 3rem auto 1.5rem;
+        @include media('>sm'){
+            margin:4rem auto 1.5rem;
+        }
+    }
+    figure {
+        margin: 0 auto 2rem;
+        text-align: left;
+        padding-right: 1rem;
+        img {
+            max-height:100px;
+        }
+    }
+    .btn {
+        background: $dark-green;
+        box-shadow: 0 0 0 0 $dark-green;
+        &:hover {
+            box-shadow: 0 0 0 4px $dark-green;
+        }
+
+    }
+}
+
+@include media('<sm') {
+    .customers .col-xs-6:nth-of-type(even) figure {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+}
+
+@include media('>sm') {
+    .customers {
+        text-align: center;
+        figure {
+            text-align: center;
+            padding-left: calc(1rem + 1vw);
+            padding-right: calc(1rem + 1vw);
+            margin-bottom: calc(2rem + 2vh);
+        }
+    }
+}

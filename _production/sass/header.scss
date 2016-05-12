@@ -1,0 +1,40 @@
+@import 'colors',
+'include-media';
+.header {
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    .icon-logo,
+    .icon-logo_invert {
+        padding: 0;
+        width: calc(145px + 20vh);
+        height: 20vh;
+        min-height: 120px;
+        max-height: 240px;
+        min-width: 145px;
+        max-width: 100%;
+        margin: 1rem 0;
+        background-size: contain;
+        border-radius: 0;
+        text-indent: -1000em;
+        @include media('>lg') {
+            margin: 2rem 0;
+            
+        }
+    }
+    /*
+    .icon-logo {
+    	display: none;
+    	position:absolute;
+    	left:0;
+    	right:0;
+    	bottom:0;
+    	background-position:center;
+    	margin:1rem auto;
+    	@include media('>lg'){
+    		margin:2rem auto;
+    		display: inline-block;
+    	}
+    }
+    */
+}

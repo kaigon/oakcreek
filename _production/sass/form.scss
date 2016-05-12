@@ -1,0 +1,83 @@
+@import 'colors',
+'include-media';
+form {}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0 0 8px;
+}
+
+@include media('>sm') {
+    fieldset {
+        padding: 0 0 1.4rem;
+    }
+    fieldset:last-of-type {
+        padding-bottom: 1rem;
+    }
+}
+
+legend {
+    font-size: 0;
+}
+
+input,
+textarea {
+    background: rgba($white, 0.92);
+    border: 0;
+    padding: 1rem;
+    color: $tan;
+    width: 100%;
+    box-shadow: 0 0 0 1px rgba($tan, 0.2);
+    transition: all 400ms ease;
+    outline: 0;
+}
+
+#ajax-contact {
+    input,
+    textarea {
+        box-shadow: 0 0 0 1px rgba($tan, 0.2), 0 3px 0 0 $bright_green;
+        &:hover {
+            background: rgba($bright_yellow, 0.92);
+        }
+        &:focus {
+            background-color: #F7FFF4;
+            box-shadow: 0 0 0 3px #F7FFF4, 0 3px 0 5px $bright_green, 0 0 0 5px $bright_green;
+            outline: 0;
+        }
+        &.missing {
+            box-shadow: 0 0 0 1px rgba($bright_brown, 1), 0 3px 0 0 $bright_brown;
+            &:focus {
+                box-shadow: 0 0 0 3px #F7FFF4, 0 3px 0 5px $bright_brown, 0 0 0 5px $bright_brown;
+                outline: 0;
+            }
+        }
+    }
+}
+
+#form-messages {
+    text-align: left;
+    transition: all 300ms ease;
+    .alert {
+        display: none;
+        margin:0 0 1rem;
+    }
+    &.error {
+        .alert {
+            display: table;
+        }
+    }
+    &.success {
+        .alert {
+            background-color: #BEFFBF;
+            display: block;
+            color: #017B73;
+        }
+        .alert-pre {
+            display: none;
+        }
+        .alert-body {
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import 'colors',
+'include-media';
+.close-button {
+    $width: 30px;
+    width: $width;
+    height: $width;
+    position: relative;
+    box-sizing: border-box;
+    line-height: $width;
+    display: inline-block;
+    padding: 0;
+    transform: scale(0.75);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms ease;
+    &:before,
+    &:after {
+        width: $width;
+        height: $width/6;
+        transform: rotate(-45deg);
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -$width/12;
+        margin-left: -$width/2;
+        display: block;
+        background-color: $dark-tan;
+        /*transition: all 0.2s ease-out;*/
+    }
+    &:after {
+        transform: rotate(45deg);
+    }
+    @include media('>sm') {
+        transform: scale(1);
+    }
+    &:hover {
+        transform: scale(1.4);
+    }
+}
+
+.on .close-button {
+    visibility: visible;
+    opacity: 1;
+}
