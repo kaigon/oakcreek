@@ -1,0 +1,106 @@
+@import 'colors',
+'include-media';
+.modal-services {
+    background: $dark_teal;
+    color: $off_teal;
+    padding-bottom: 6rem;
+    opacity:0;
+    &.on {
+        opacity:1;
+        background: $dark_teal;
+    }
+    .close-button:after,
+    .close-button:before {
+        background-color: $off_green;
+    }
+    h2 {
+        color: $off_white;
+        span {
+            color: $light_teal;
+            font-size: 80%;
+            display: block;
+            @include media('>sm') {
+                display: inline-block;
+                &:before {
+                    content: '//';
+                    color: darken($dark_teal, 5);
+                    padding-right: 4px;
+                }
+            }
+        }
+        &:after {
+            background-color: $light_brown;
+        }
+    }
+    h3 {
+        font-weight: 400;
+        font-size: 1.2em;
+        margin-top: 1rem;
+    }
+    main {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    article {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+    h4 {
+        color: $bright_green;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+    &.modal-mailing {
+        h4 {
+            margin-bottom:0;
+        }
+    }
+    figure {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    li {
+        span {
+            color: lighten($light_teal, 15);
+            font-size: 90%;
+            display: block;
+        }
+        ul {
+            margin-top:1.25rem;
+        }
+        li {
+            color:darken($off_teal,15);
+        }
+    }
+    footer {
+        h3 {
+            color: $white;
+            font-size: 1.6rem;
+            line-height: 1.2;
+            span {
+                display: block;
+            }
+        }
+        .btn {
+            //font-size: 1.4em;
+            padding-bottom: 0.6rem;
+            //margin-top: 1.4rem;
+            background-color: $off_green;
+            color: darken($dark_teal, 6);
+        }
+        @include media('>sm') {
+            text-align: center;
+            h3 {
+                font-size: 2.25rem;
+                letter-spacing: -2px;
+                span {
+                    display: inline;
+                }
+            }
+            .btn {
+                font-size: 1.4em;
+                margin-top: 1.4rem;
+            }
+        }
+    }
+}

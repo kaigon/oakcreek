@@ -22,19 +22,17 @@
             
         }
     }
-    /*
-    .icon-logo {
-    	display: none;
-    	position:absolute;
-    	left:0;
-    	right:0;
-    	bottom:0;
-    	background-position:center;
-    	margin:1rem auto;
-    	@include media('>lg'){
-    		margin:2rem auto;
-    		display: inline-block;
-    	}
+    .logo {
+        width: calc(145px + 20vh);
+        min-width: 145px;
+        max-width: 220px;
+        margin: 1rem 0;
+        img {
+            height:auto;
+        }
+        @include media('>lg') {
+            margin: 2rem 0;
+            
+        }
     }
-    */
 }

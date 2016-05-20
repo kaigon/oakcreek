@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             },
             target: {
                 files: {
-                    'style.css': ['_production/sass/css/build/*.css'] // can merge multiple css files. ex: ['foo.css', 'bar.css']
+                    'style.css': ['_production/vendor/css/normalize.css','_production/vendor/css/flexboxgrid.min.css','_production/sass/css/build/*.css'] // can merge multiple css files. ex: ['foo.css', 'bar.css']
                 }
             }
         },
@@ -204,9 +204,13 @@ module.exports = function(grunt) {
             html: {
                 files: ['*.html', '*.php'],
                 options: {
-                    livereload: true
+                    livereload: true,
                 }
             },
+            includes: {
+                files:['inc/*.php'],
+                tasks:['jsStuff'],
+            }
         },
         clean: {
             build: {

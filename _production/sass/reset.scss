@@ -12,7 +12,7 @@ html {
 
 body {
     overflow-x: hidden;
-    overflow-y:visible;
+    overflow-y: visible;
     transition: overflow-y 0ms ease 2000ms;
 }
 
@@ -21,7 +21,7 @@ figure {
 }
 
 button {
-    outline:none;
+    outline: none;
 }
 
 a,
@@ -46,7 +46,10 @@ a,
         width: 100%;
     }
 }
-a {display: inline-block;}
+
+a {
+    display: inline-block;
+}
 
 i {
     font-style: normal;
@@ -65,6 +68,9 @@ img {
     max-width: 86rem;
     padding-right: 1rem;
     padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 @include media(">sm") {

@@ -1,5 +1,5 @@
 var u = new Url();
-console.log(u);
+//console.log(u);
 if(u.query.section){
 	$('html,body').animate({
         scrollTop: $('.' + u.query.section).offset().top

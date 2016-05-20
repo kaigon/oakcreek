@@ -48,8 +48,8 @@
     .btn[type="submit"] {
         background-color: $bright-green;
         margin-bottom: 4rem;
-        color:$dark_green;
-        font-weight:400;
+        color: $dark_green;
+        font-weight: 400;
         /*
         box-shadow: 0 0 0 0 $bright-green;
         &:hover {
@@ -63,17 +63,17 @@
         }
     }
     footer {
-        @include media('<sm'){
+        @include media('<sm') {
             .container-fluid {
-                padding:0;
+                padding: 0;
             }
         }
         p {
-            display: none;
+            padding-left: 1rem;
         }
         @include media('>sm') {
             p {
-                display: inline-block;
+                padding-left: 0;
             }
         }
         i[class*="icon-"] {
@@ -86,7 +86,15 @@
         }
     }
     .icon-tree {
-        background-position: 156% 105%;
-        background-size: 64%;
+        @include media('>sm') {
+            background-image: url(img/tree.svg);
+            background-repeat: no-repeat;
+            background-position: calc(25% + 54vw) bottom;
+            background-size: calc(50% + 30vw);
+        }
+        @include media('>md') {
+            background-position: 156% 105%;
+            background-size: 64%;
+        }
     }
 }

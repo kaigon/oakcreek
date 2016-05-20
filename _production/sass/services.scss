@@ -12,19 +12,27 @@
         perspective: 40rem;
         position: relative;
     }
-}
-
-@include media('>sm') {
-    .services {
+    @include media('>sm') {
         max-width: none;
+        .box {
+            margin-bottom: 40px;
+        }
+    }
+    @include media('>md') {
+        .box:hover .box-flip {
+            transform: rotateY(180deg);
+            transition: all 500ms ease 75ms;
+        }
     }
 }
 
-$speed:500;
 .box-flip {
     padding: 3rem 0 1rem;
-    transition: all $speed+ms ease 75ms;
+    transition: all 500ms ease 75ms;
     transform-style: preserve-3d;
+    @include media('>sm') {
+        padding: 0 30px 20px 50px;
+    }
 }
 
 .box-front {
@@ -48,8 +56,23 @@ $speed:500;
     }
 }
 
-@include media('>md') {
-    .box-back {
+.box-back {
+    a {
+        color: $bright-teal;
+        display: inline-block;
+        font-size: 16px;
+        letter-spacing: 0px;
+        @include media('<sm') {
+            background: $white;
+        }
+        span:after {
+            content: '\00bb';
+        }
+        i {
+            display: none;
+        }
+    }
+    @include media('>md') {
         transform: rotateY(180deg);
         position: absolute;
         left: 0;
@@ -75,74 +98,42 @@ $speed:500;
             display: -ms-flexbox;
             display: flex;
             width: 100%;
-            margin:0;
+            margin: 0;
+            font-size: 1.3rem;
             &:after {
                 display: none;
             }
             span {
                 position: relative;
                 z-index: 2;
+                &:after {
+                    display: none;
+                }
                 i[class*="icon-"] {
                     width: 60px;
                     height: 60px;
                     display: block;
                     margin: 0.75rem auto 0;
                     background-size: contain;
+                    display: block;
                 }
             }
         }
     }
 }
 
-@include media('<md') {
-    .box-back a {
-        color: $bright-teal;
-        background: $white;
-        display: inline-block;
-        font-size: 16px;
-        letter-spacing: 0px;
-        span:after {
-            content: '\00bb';
-        }
-        i {
-            display: none;
-        }
-    }
-}
-
 @include media('>sm') {
-    .box-flip {
-        padding: 0 30px 20px 50px;
-    }
-}
-
-@include media('>sm') {
-    .services .box {
-        margin-bottom: 40px;
-    }
-}
-
-@include media('>md') {
-    .services .box:hover .box-flip {
-        transform: rotateY(180deg);
-        transition: all $speed+ms ease 75ms;
-    }
-}
-
-
-.no-preserve3d {
-    .box {
-        .box-back {
-            opacity: 0;
-            transition: opacity 250ms ease;
-            backface-visibility: visible;
-        }
-        &:hover .box-back {
-            opacity: 1;
-            transition: opacity 250ms ease;
+    .no-preserve3d {
+        .box {
+            .box-back {
+                opacity: 0;
+                transition: opacity 250ms ease;
+                backface-visibility: visible;
+            }
+            &:hover .box-back {
+                opacity: 1;
+                transition: opacity 250ms ease;
+            }
         }
     }
-
 }
-
-

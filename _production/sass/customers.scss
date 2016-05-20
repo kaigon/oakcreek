@@ -1,8 +1,9 @@
 @import 'colors',
 'include-media';
 .customers {
-    background: $bright-tan;
+    background: $bright_tan;
     text-align: left;
+    color:$dark_tan;
     h2 {
         margin-bottom:4rem;
         @include media('>sm'){

@@ -23,7 +23,7 @@
             }
         });
 
-        var content = '<h2><strong>' + type + '</strong></h2>' + deets + '';
+        var content = '<h4><strong>' + type + '</strong></h4>' + deets + '';
         $('.guidelines_articles').html('<article data-guidelines="' + type + '" style="display:block;">' + content + '</article>');
         $('button[data-guidelines-toggle]').eq(0).addClass('active');
 
@@ -47,7 +47,7 @@
             }
         });
 
-        var content = '<h2><strong>' + type + '</strong></h2>' + deets + '';
+        var content = '<h4><strong>' + type + '</strong></h4>' + deets + '';
 
         if ($('.guidelines_articles').is(':visible')) {
             var exists = $('.guidelines_articles article');

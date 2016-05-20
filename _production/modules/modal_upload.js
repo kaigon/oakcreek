@@ -1,7 +1,7 @@
 $(function() {
 
-    var acceptable = ['ai', 'psd', 'eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
-    var maxSize = 20000000;
+    var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
+    var maxSize = 40000000;
     var exists, oops;
 
 
@@ -10,12 +10,13 @@ $(function() {
     // Change this to the location of your server-side upload handler:
     var url = window.location.hostname === 'localhost:8080' ?
         '//oakcreek/' : 'files/uploaded/';
-    $('#fileupload').fileupload({
+    //$('#fileupload').fileupload({
+    $('#dnd_field').fileupload({
             url: url,
             dataType: 'json',
             //autoUpload: false,
-            acceptFileTypes: /(\.|\/)(ai|psd|eps|pdf|tif|zip|rar|jpe?g|png)$/i,
-            maxFileSize: 20000000,
+            acceptFileTypes: /(\.|\/)(eps|pdf|tif|zip|rar|jpe?g|png)$/i,
+            maxFileSize: 40000000,
             dragover: function(e, data) {
                 $('#upload_files').addClass('dragging');
             },
@@ -42,10 +43,12 @@ $(function() {
                     }
                 } else if (data.originalFiles[0].size > maxSize) { //20 MB
                     // file is too big. Throw errors
+                    var toobig = maxSize / 1000;
+                    toobig = toobig / 1000;
                     exists = $('#upload_files .alert-toobig');
                     if (!exists.length) {
                         // alert doesn't exist yet. create it
-                        oops = createAlert('alert-toobig', 'File size cannot exceed 20mb');
+                        oops = createAlert('alert-toobig', 'File size cannot exceed '+toobig+'mb');
                         $('#files').before(oops);
                     } else {
                         $('#upload_files .alert-toobig').addClass('alert-reminder').delay(300).queue(function() {

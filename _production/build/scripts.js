@@ -1,5 +1,5 @@
 (function($){
-$(document).on('click', '.close-button:not(.cancel)', function() {
+$(document).on('click', '[data-type="close"]:not(.cancel)', function() {
     var target = $(this).data('target');
     var bodyClass = $(this).data('bodyclass');
     //console.log('target = '+target);
@@ -182,7 +182,7 @@ $(document).on('focus', 'input[type="tel"]', function() {
             }
         });
 
-        var content = '<h2><strong>' + type + '</strong></h2>' + deets + '';
+        var content = '<h4><strong>' + type + '</strong></h4>' + deets + '';
         $('.guidelines_articles').html('<article data-guidelines="' + type + '" style="display:block;">' + content + '</article>');
         $('button[data-guidelines-toggle]').eq(0).addClass('active');
 
@@ -206,7 +206,7 @@ $(document).on('focus', 'input[type="tel"]', function() {
             }
         });
 
-        var content = '<h2><strong>' + type + '</strong></h2>' + deets + '';
+        var content = '<h4><strong>' + type + '</strong></h4>' + deets + '';
 
         if ($('.guidelines_articles').is(':visible')) {
             var exists = $('.guidelines_articles article');
@@ -274,48 +274,29 @@ $(document).on('click', '.nav-menu', function() {
     }
 
 });
-$(document).on('click', '[data-modal]', function() {
+$(document).on('click', '[data-modal]', function(e) {
+    e.preventDefault();
     var target = $(this).data('modal');
     //var scrollbars = measure_scrollbars();
 
-    var modal = '<div class="modal">';
-    modal+='<div class="modal-content">';
-    modal+='<div class="container-fluid">';
-    modal+='<div class="box">';
-    if(target==='upload_files'){
-        modal+=modal_upload_files();
-    }
-    modal+='</div>'; // end box
-    modal+='</div>'; // end container-fluid
-    modal+='</div>'; // end modal-content
-    modal += '</div>'; // end modal
 
 
-    if (target === 'upload_files') {
+
+    setTimeout(function() {
+        $('#' + target).addClass('on');
+        //$('.modal').addClass('on');
         setTimeout(function() {
-            $('#'+target).addClass('on');
-            setTimeout(function() {
-                $('body').addClass('modalOn');
-            }, 300);
-        }, 100);
-    } else {
-        $('body').append(modal);
-
-        setTimeout(function() {
-            $('.modal').addClass('on');
-            setTimeout(function() {
-                $('body').addClass('modalOn');
-            }, 300);
-        }, 100);
-    }
-
+            $('body').addClass('modalOn');
+        }, 300);
+    }, 100);
 
 
 });
+
 $(function() {
 
-    var acceptable = ['ai', 'psd', 'eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
-    var maxSize = 20000000;
+    var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
+    var maxSize = 40000000;
     var exists, oops;
 
 
@@ -324,12 +305,13 @@ $(function() {
     // Change this to the location of your server-side upload handler:
     var url = window.location.hostname === 'localhost:8080' ?
         '//oakcreek/' : 'files/uploaded/';
-    $('#fileupload').fileupload({
+    //$('#fileupload').fileupload({
+    $('#dnd_field').fileupload({
             url: url,
             dataType: 'json',
             //autoUpload: false,
-            acceptFileTypes: /(\.|\/)(ai|psd|eps|pdf|tif|zip|rar|jpe?g|png)$/i,
-            maxFileSize: 20000000,
+            acceptFileTypes: /(\.|\/)(eps|pdf|tif|zip|rar|jpe?g|png)$/i,
+            maxFileSize: 40000000,
             dragover: function(e, data) {
                 $('#upload_files').addClass('dragging');
             },
@@ -356,10 +338,12 @@ $(function() {
                     }
                 } else if (data.originalFiles[0].size > maxSize) { //20 MB
                     // file is too big. Throw errors
+                    var toobig = maxSize / 1000;
+                    toobig = toobig / 1000;
                     exists = $('#upload_files .alert-toobig');
                     if (!exists.length) {
                         // alert doesn't exist yet. create it
-                        oops = createAlert('alert-toobig', 'File size cannot exceed 20mb');
+                        oops = createAlert('alert-toobig', 'File size cannot exceed '+toobig+'mb');
                         $('#files').before(oops);
                     } else {
                         $('#upload_files .alert-toobig').addClass('alert-reminder').delay(300).queue(function() {
@@ -527,7 +511,7 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
 });
 
 var u = new Url();
-console.log(u);
+//console.log(u);
 if(u.query.section){
 	$('html,body').animate({
         scrollTop: $('.' + u.query.section).offset().top

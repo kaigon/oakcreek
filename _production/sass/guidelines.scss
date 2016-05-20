@@ -1,7 +1,7 @@
 @import 'colors',
 'include-media';
 .guidelines {
-    background: url(img/bg_guidelines.jpg) no-repeat center top $dark-brown;
+    background: url(img/bg_guidelines_mobile.jpg) no-repeat center top $dark-brown;
     color: $light-tan;
     background-size: contain;
     position: relative;
@@ -9,118 +9,117 @@
     h2 {
         color: $bright-tan;
     }
+    h4 {
+        display: none;
+        font-size: 1.8em;
+        color: $white;
+        margin-bottom: 1rem;
+    }
+    aside {
+        color: #8DA780;
+        margin-top: 1rem;
+        font-style: italic;
+        font-weight: normal;
+        border-left: 3px solid #9A4423;
+        padding-left: 0.75rem;
+        font-family: 'Merriweather',Georgia, serif;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+        padding: 0 1rem;
+        font-size:90%;
+        letter-spacing: 0.5px;
+    }
     @include media('>sm') {
+        padding-bottom: calc(10rem + 32px);
+        background: url(img/bg_guidelines.jpg) no-repeat center top $dark-brown;
         h2 {
             margin-bottom: 1.4rem;
         }
-    }
-    article h2:after {
-        display: none;
-    }
-    @include media('>sm') {
-        article {
+        h4 {
             display: block;
         }
-    }
-    main {
-        @include media('<sm') {
-            button {
-                display: block;
-                width: 100%;
-                text-align: left;
-                border-bottom: 1px solid;
-                border-radius: 0;
-                font-size: 1.4rem;
-            }
-            button:before {
-                content: '';
-                width: 10px;
-                height: 10px;
-                transform: rotate(45deg);
-                display: inline-block;
-                border-bottom: 2px solid $bright-teal;
-                border-right: 2px solid $bright-teal;
-                position: relative;
-                top: -3.5px;
-                margin-right: 10px;
-            }
-            button.expanded {
-                color: $white;
-            }
-            button.expanded:before {
-                border-color: $white;
-            }
-        }
-        button {
-            padding: 0.5rem 0.5rem 0.5rem 0;
-            color: $off-green;
-            display: block;
-            outline: none;
-        }
-        button:hover {
-            color: $white;
-        }
-        @include media('>sm') {
-            button.active {
-                color: $bright-tan;
-                cursor: default;
-            }
-            button.active:before {
-                content: '\27a8';
-                position: absolute;
-                left: -40px;
-                font-size: 1.7rem;
-                top: 50%;
-                transform: translateY(-50%);
-                color: $light-teal;
-            }
-        }
-        button ~ p {
-            margin-top: 2rem;
-        }
-    }
-    li>aside {
-        color: $off-green;
-        margin-top: 0.5rem;
-        font-size: 1.2rem;
-        font-weight: 300;
-    }
-    @include media('>sm') {
-        footer {
-            text-align: center;
+        aside {
+            font-size: 80%;
         }
     }
     footer {
         h3 {
             margin: 3rem auto 2rem;
-            color: $bright-tan;
+            color: $bright_tan;
         }
         .btn {
-            margin: 0 0.5rem;
-            background: $light-brown;
+            background: $light_brown;
             outline: none;
-            box-shadow: 0 0 0 0 $light-brown;
-            &:hover:not(.btn-invert) {
-                box-shadow: 0 0 0 4px $light-brown;
+            box-shadow: 0 0 0 0 $light_brown;
+            margin: 0 0.5rem 12px 0;
+            display: block;
+            font-size: 1rem;
+            &[data-modal] {
+                font-size: 1em;
             }
-        }
-        @include media('<sm') {
-            .btn {
-                font-size: 16px;
-                margin: 0 0.5rem 12px 0;
-                display: inline-block;
+            &:hover:not(.btn-invert) {
+                box-shadow: 0 0 0 4px $light_brown;
             }
         }
         .btn-invert {
             color: $white;
-            border-color: $light-brown;
+            border-color: $light_brown;
             background: transparent;
         }
+        @include media('>sm') {
+            text-align: center;
+            .btn {
+                display: inline-block;
+                font-size: 1.6rem;
+                margin: 0 0.5rem;
+                &[data-modal] {
+                    font-size: 1.6rem;
+                }
+            }
+        }
     }
-    p > .btn {
-        padding-left: 40px;
+}
+
+.guidelines_buttons {
+    padding-top: 2rem;
+    .btn-link {
+        display: block;
+        padding-left: 0;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #635249;
+        border-radius: 0;
+        color: $off_green;
+        font-weight:400;
+        &:before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            display: inline-block;
+            border-bottom: 2px solid $bright_teal;
+            border-right: 2px solid $bright_teal;
+            position: relative;
+            top: -3.5px;
+            margin-right: 10px;
+        }
+        &.expanded {
+            color: $white;
+            &:before {
+                border-color: $white;
+            }
+        }
+        &:last-of-type {
+            border-bottom: 0;
+        }
     }
-    p > .btn > i {
+    p {
+        margin-top: 2.6rem;
+        .btn {
+            padding-left: 40px;
+        }
+    }
+    .icon-pdf {
         width: 30px;
         height: 30px;
         position: absolute;
@@ -128,20 +127,46 @@
         top: 50%;
         transform: translateY(-50%);
     }
+    article {
+        font-size: 0.8em;
+        margin: 1rem 0 1rem 1.4rem;
+    }
+    @include media('>sm') {
+        padding-top: 0;
+        .btn-link {
+            border-bottom: 0;
+            color: $bright_tan;
+            display: table;
+            width: auto;
+            &:before {
+                display: none;
+            }
+            &.expanded {
+                color: $bright_tan;
+            }
+            &.active {
+                &:before {
+                    content: '\27a8';
+                    position: relative;
+                    margin-left: -40px;
+                    font-size: 1.7rem;
+                    transform: none;
+                    color: $light_teal;
+                    display: block;
+                    border: 0;
+                    float: left;
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
 }
 
 .guidelines_articles {
     display: none;
 }
 
-.guidelines article {
-    display: none;
-}
-
 @include media('>sm') {
-    .guidelines {
-        padding-bottom: calc(10rem + 32px);
-    }
     .guidelines_articles {
         display: block;
     }
