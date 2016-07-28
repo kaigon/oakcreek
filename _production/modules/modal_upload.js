@@ -1,3 +1,4 @@
+/*
 $(function() {
 
     var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
@@ -111,3 +112,4 @@ $(function() {
         });
 
 });
+*/

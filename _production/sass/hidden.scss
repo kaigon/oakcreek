@@ -1,5 +1,9 @@
 @import 'colors',
 'include-media';
+:not(html).hidden {
+	display:none;
+}
+
 .hidden-xs {
 	@include media('<sm'){
 		display:none!important;	

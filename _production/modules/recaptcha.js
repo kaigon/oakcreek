@@ -26,8 +26,8 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     num = getValidNumber(phone);
 
 
-    /*
     
+    /*
     if (num === false) {
         // invalid
         exists = $(target + ' .alert-phone').length;
@@ -72,7 +72,8 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
             }
 
         }
-            */
+    */
+           
 
     var box2 = $(this).parent().parent();
     if (box2.hasClass('box-2')) {
@@ -93,10 +94,12 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     }
 
     // delete this and uncomment the above when ready re-enable captcha
+    
     $('.alert').remove();
     removeclasses(target, "slide");
     $(target).addClass('slide-' + slide);
     $('[modal-slide-button].active').removeClass('active');
     $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
+    
 
 });

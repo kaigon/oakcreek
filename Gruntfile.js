@@ -69,12 +69,14 @@ module.exports = function(grunt) {
                     separator: "\n", //add a new line after each file
                 },
                 src: [
-                    '_production/vendor/js/plugins/jquery.ui.widget.js',
-                    '_production/vendor/js/plugins/jquery.iframe-transport.js',
-                    '_production/vendor/js/plugins/jquery.fileupload.js',
+                    //'_production/vendor/js/plugins/jquery.ui.widget.js',
+                    //'_production/vendor/js/plugins/jquery.iframe-transport.js',
+                    //'_production/vendor/js/plugins/jquery.fileupload.js',
                     '_production/vendor/js/plugins/jquery.formatter.min.js',
+                    //'_production/vendor/js/plugins/jquery-ui.min.js',
                     '_production/vendor/js/plugins/jquery.waypoints.min.js',
                     '_production/vendor/js/plugins/url.min.js',
+                    '_production/vendor/js/plugins/jquery.dragbetter.js',
                     //'_production/vendor/js/plugins/jquery.history.js',
                     //'_production/vendor/js/plugins/inview.min.js',
                     //'_production/vendor/js/plugins/jquery.validate.min.js', 

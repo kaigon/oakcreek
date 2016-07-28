@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
+<?php date_default_timezone_set("America/Chicago"); ?>
 <head>
     <meta charset="UTF-8">
     <title>Oakcreek Printing and Mailing</title>
-    <meta name="description" content="We have the capacity to meet your needs.">
+    <meta name="description" content="We are a full service printing and mailing company based in Lincoln, NE. No matter your project's size or scope we have the capacity to meet your needs.">
     <meta name="author" content="Lincoln Journal Star">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700|Merriweather:300italic' rel='stylesheet' type='text/css'>
@@ -13,77 +13,8 @@
     <link rel="stylesheet" href="style.css">
     <script>
     /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
-    (function(e) {
-        function t(t, n, r, o) {
-            "use strict";
+    (function(e) { function t(t, n, r, o) { "use strict"; function a() { for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0); e ? i.media = r || "all" : setTimeout(a) } var i = e.document.createElement("link"), l = n || e.document.getElementsByTagName("script")[0], u = e.document.styleSheets; return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i } var n = function(r, o) { "use strict"; if (r && 3 === r.length) { var a = e.navigator, i = e.Image, l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")), u = new i; u.onerror = function() { n.method = "png", n.href = r[2], t(r[2]) }, u.onload = function() { var e = 1 === u.width && 1 === u.height, a = r[e && l ? 0 : e ? 1 : 2]; n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o) }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon" } }; n.loadCSS = t, e.grunticon = n })(this); (function(e, t) { "use strict"; var n = t.document, r = "grunticon:", o = function(e) { if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e(); else { var t = !1; n.addEventListener("readystatechange", function() { t || (t = !0, e()) }, !1) } }, a = function(e) { return t.document.querySelector('link[href$="' + e + '"]') }, c = function(e) { var t, n, o, a, c, i, u = {}; if (t = e.sheet, !t) return u; n = t.cssRules ? t.cssRules : t.rules; for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i); return u }, i = function(e) { var t, o, a; o = "data-grunticon-embed"; for (var c in e) if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length) for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o); return t }, u = function(t) { "svg" === e.method && o(function() { i(c(a(e.href))), "function" == typeof t && t() }) }; e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u })(grunticon, this); grunticon(["img/icons.data.svg.css", "img/icons.data.png.css", "img/icons.fallback.css"], grunticon.svgLoadedCallback);
 
-            function a() {
-                for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0);
-                e ? i.media = r || "all" : setTimeout(a)
-            }
-            var i = e.document.createElement("link"),
-                l = n || e.document.getElementsByTagName("script")[0],
-                u = e.document.styleSheets;
-            return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i
-        }
-        var n = function(r, o) {
-            "use strict";
-            if (r && 3 === r.length) {
-                var a = e.navigator,
-                    i = e.Image,
-                    l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")),
-                    u = new i;
-                u.onerror = function() {
-                    n.method = "png", n.href = r[2], t(r[2])
-                }, u.onload = function() {
-                    var e = 1 === u.width && 1 === u.height,
-                        a = r[e && l ? 0 : e ? 1 : 2];
-                    n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o)
-                }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon"
-            }
-        };
-        n.loadCSS = t, e.grunticon = n
-    })(this);
-    (function(e, t) {
-        "use strict";
-        var n = t.document,
-            r = "grunticon:",
-            o = function(e) {
-                if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e();
-                else {
-                    var t = !1;
-                    n.addEventListener("readystatechange", function() {
-                        t || (t = !0, e())
-                    }, !1)
-                }
-            },
-            a = function(e) {
-                return t.document.querySelector('link[href$="' + e + '"]')
-            },
-            c = function(e) {
-                var t, n, o, a, c, i, u = {};
-                if (t = e.sheet, !t) return u;
-                n = t.cssRules ? t.cssRules : t.rules;
-                for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i);
-                return u
-            },
-            i = function(e) {
-                var t, o, a;
-                o = "data-grunticon-embed";
-                for (var c in e)
-                    if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length)
-                        for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o);
-                return t
-            },
-            u = function(t) {
-                "svg" === e.method && o(function() {
-                    i(c(a(e.href))), "function" == typeof t && t()
-                })
-            };
-        e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u
-    })(grunticon, this);
-
-    grunticon(["img/icons.data.svg.css", "img/icons.data.png.css", "img/icons.fallback.css"], grunticon.svgLoadedCallback);
     </script>
     <noscript>
         <link href="img/icons.fallback.css" rel="stylesheet">
@@ -578,7 +509,7 @@ $class.='"';
         </script>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="js/vendor/custom-modernizr.js"></script>
-        <script src="js/production.min.js" async></script>
+        <script src="js/production.min.js?<?php echo date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000)); ?>" async></script>
         <script>
         (function(b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;

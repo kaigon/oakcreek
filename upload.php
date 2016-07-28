@@ -9,11 +9,11 @@ include('src/class.upload.php');
 $dir_dest = (isset($_GET['dir']) ? $_GET['dir'] : 'tmp');
 $dir_pics = (isset($_GET['pics']) ? $_GET['pics'] : $dir_dest);
 
-
+$fileupload = '<label>Files:</label><br>';
 
 
 // we have three forms on the test page, so we redirect accordingly
-if ((isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '')) == 'multiple') {
+if ((isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '')) == 'xhr') {
 
     // ---------- MULTIPLE UPLOADS ----------
 
@@ -24,6 +24,7 @@ if ((isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GE
             if (!array_key_exists($i, $files))
                 $files[$i] = array();
             $files[$i][$k] = $v;
+            
         }
     }
 
@@ -44,83 +45,108 @@ if ((isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GE
 
             // we check if everything went OK
             if ($handle->processed) {
+                $fileupload .= '<p><a href="'.$dir_pics.'/' . $handle->file_dst_name . '">' . $handle->file_dst_name . '</a></p>';
                 // everything was fine !
+                /*
                 echo '<p class="result">';
                 echo '  <b>File uploaded with success</b><br />';
                 echo '  File: <a href="'.$dir_pics.'/' . $handle->file_dst_name . '">' . $handle->file_dst_name . '</a>';
                 echo '   (' . round(filesize($handle->file_dst_pathname)/256)/4 . 'KB)';
                 echo '</p>';
+                */
             } else {
                 // one error occured
+                /*
                 echo '<p class="result">';
                 echo '  <b>File not uploaded to the wanted location</b><br />';
                 echo '  Error: ' . $handle->error . '';
                 echo '</p>';
+                */
             }
+            /*
+            if (isset($handle)) {
+                echo '<pre>';
+                echo($handle->log);
+                echo '</pre>';
+            }
+            */
 
         } else {
             // if we're here, the upload file failed for some reasons
             // i.e. the server didn't receive the file
+            /*
             echo '<p class="result">';
             echo '  <b>File not uploaded on the server</b><br />';
             echo '  Error: ' . $handle->error . '';
             echo '</p>';
+            */
         }
     }
 
-} else if ((isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '')) == 'local' || isset($_GET['file'])) {
 
-    // ---------- LOCAL PROCESSING ----------
+    $subjectline = 'Files were uploaded to Oakcreek Printing!';
+    $my_email = 'jparks@journalstar.com';
 
+    // Only process POST reqeusts.
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the form fields and remove whitespace.
+        //$name = strip_tags(trim($_POST["ubizname"]));
+                //$name = str_replace(array("\r","\n"),array(" "," "),$name);
+        //$email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $phone = preg_replace('/[^0-9]/', '', $_POST['ubizphone']);
+        $company = trim($_POST["ubizname"]);
+        $message = trim($_POST["ubizmessage"]);
 
-    //error_reporting(E_ALL ^ (E_NOTICE | E_USER_NOTICE | E_WARNING | E_USER_WARNING));
-    ini_set("max_execution_time",0);
-
-    // we don't upload, we just send a local filename (image)
-    $handle = new Upload((isset($_POST['my_field']) ? $_POST['my_field'] : (isset($_GET['file']) ? $_GET['file'] : '')));
-
-    // then we check if the file has been "uploaded" properly
-    // in our case, it means if the file is present on the local file system
-    if ($handle->uploaded) {
-
-        // now, we start a serie of processes, with different parameters
-        // we use a little function TestProcess() to avoid repeting the same code too many times
-        function TestProcess(&$handle, $title = 'test', $details='') {
-            global $dir_pics, $dir_dest;
-
-            $handle->Process($dir_dest);
-
-            if ($handle->processed) {
-                echo '<fieldset class="classuploadphp">';
-                echo '  <legend>' . $title . '</legend>';
-                echo '  <div class="classuploadphppic"><img src="'.$dir_pics.'/' . $handle->file_dst_name . '" />';
-                $info = getimagesize($handle->file_dst_pathname);
-                echo '  <p>' . $info['mime'] . ' &nbsp;-&nbsp; ' . $info[0] . ' x ' . $info[1] .' &nbsp;-&nbsp; ' . round(filesize($handle->file_dst_pathname)/256)/4 . 'KB</p></div>';
-                if ($details) echo '  <pre class="code php">' . htmlentities($details) . '</pre>';
-                echo '</fieldset>';
-            } else {
-                echo '<fieldset class="classuploadphp">';
-                echo '  <legend>' . $title . '</legend>';
-                echo '  Error: ' . $handle->error . '';
-                if ($details) echo '  <pre class="code php">' . htmlentities($details) . '</pre>';
-                echo '</fieldset>';
-            }
+        // Check that data was sent to the mailer.
+        /*
+        if ( empty($phone) ) {
+            // Set a 400 (bad request) response code and exit.
+            http_response_code(400);
+            echo "Oops! There was a problem with your submission. Please complete the form and try again.";
+            //echo "[name] = ".$name." and [message] = ".$message." and [email] = ".$email;
+            exit;
         }
-        if (!file_exists($dir_dest)) mkdir($dir_dest);
-    
+        */
+
+        // Set the recipient email address.
+        // FIXME: Update this to your desired email address.
+        $recipient = $my_email;
+
+        // Set the email subject.
+        $subject = $subjectline;
+
+        // Build the email content.
+        $email_content = '';
+        if($company){ $email_content .= "Business: $company\n"; }
+        if($phone){ $email_content .= "Phone: $phone\n";}
+        if($message){ $email_content .= "\nMessage:\n$message\n"; }
+        $email_content .= $fileupload;
+
+        // Build the email headers.
+        //$email_headers = "From: $name <$email>";
+        $email_headers = '';
+
+        // Send the email.
+        if (mail($recipient, $subject, $email_content, $email_headers)) {
+            // Set a 200 (okay) response code.
+            http_response_code(200);
+            echo "Thank You! Your message has been sent. We will be in touch!";
+        } else {
+            // Set a 500 (internal server error) response code.
+            http_response_code(500);
+            echo "Oops! Something went wrong and we couldn't send your message.";
+        }
 
     } else {
-        // if we are here, the local file failed for some reasons
-        echo '<b>local file error</b><br />';
-        echo 'Error: ' . $handle->error . '';
+        // Not a POST request, set a 403 (forbidden) response code.
+        http_response_code(403);
+        echo "There was a problem with your submission, please try again.";
     }
-}
 
-echo '<p class="result"><a href="index.html">do another test</a></p>';
-
-if (isset($handle)) {
-    echo '<pre>';
-    echo($handle->log);
-    echo '</pre>';
 }
+//echo '<h2>Thank you!</h2>';
+//echo 'Your files have been uploaded and someone should be in touch with you shortly';
+
+
+
 ?>
