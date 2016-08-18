@@ -20,7 +20,7 @@ body {
         line-height: 1.556;
     }
     @include media(">lg") {
-        font-size: 1.3rem;
+        //font-size: 1.3rem;
         line-height: 1.350;
     }
 }
@@ -45,7 +45,7 @@ h6 {
 
 h1 {
     //font-size: 200%;
-    font-size: 3.375em;
+    font-size: 2.4em;
     line-height: 1.1;
     letter-spacing: -0.01vw;
     &:after {
@@ -76,9 +76,9 @@ h2 {
 h3 {
     font-size: 1em;
     //font-weight: 400;
-    line-height: 1.4;
+    //line-height: 1.4;
     @include media('>md'){
-        font-size: 1.4rem;
+        font-size: 1.3em;
     }
 }
 

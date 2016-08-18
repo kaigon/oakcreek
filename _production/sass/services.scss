@@ -19,10 +19,12 @@
         }
     }
     @include media('>md') {
+        /*
         .box:hover .box-flip {
             transform: rotateY(180deg);
             transition: all 500ms ease 75ms;
         }
+        */
     }
 }
 

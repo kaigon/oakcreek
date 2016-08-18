@@ -4,8 +4,8 @@ $(function() {
 	var form = $('#ajax-contact');
 
 	// Get the messages div.
-	var formMessages = $('#form-messages');
-	var formText = $('#form-messages-content');
+	var formMessages = $('.form-messages');
+	var formText = $('.form-messages-content');
 
 	// Set up an event listener for the contact form.
 	$(form).submit(function(e) {
@@ -51,7 +51,7 @@ $(function() {
 			if (response !== '') {
 				$(formText).text(response);
 			} else {
-				$(formText).text('Thank you! We will be in touch!');
+				$('.content__message').text('Thank you! We will be in touch!');
 			}
 			// Clear the form.
 			$('#name').val('');

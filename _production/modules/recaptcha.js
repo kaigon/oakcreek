@@ -26,8 +26,7 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     num = getValidNumber(phone);
 
 
-    
-    /*
+
     if (num === false) {
         // invalid
         exists = $(target + ' .alert-phone').length;
@@ -41,43 +40,49 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
             });
         }
         return false;
+    } else {
+        exists = $(target + ' .alert-phone');
+        if (exists.length) { exists.remove(); }
+    }
+    
+
+    
+    if ($(this).data(recaptcha)) {
+        var response = grecaptcha.getResponse();
+
+
+        if (response.length === 0) {
+            //reCaptcha not verified
+            exists = $(target + ' .alert-recaptcha').length;
+            if (!exists) {
+                // alert doesn't exist yet. create it
+                oops = createAlert('alert-recaptcha', "Whoops! Please complete the reCAPTCHA field above to continue to the next screen.");
+                $(this).before(oops);
+            } else {
+                // flash the alert as a reminder that they still need to verify
+                $(target + ' .alert-recaptcha').addClass('alert-reminder').delay(300).queue(function() {
+                    $(target + ' .alert-recaptcha').removeClass('alert-reminder').dequeue();
+                });
+            }
+
+        } else {
+            //reCaptch verified
+            $('.alert').remove();
+            removeclasses(target, "slide");
+            $(target).addClass('slide-' + slide);
+            $('[modal-slide-button].active').removeClass('active');
+            $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
+        }
+
     }
 
 
-        if ($(this).data(recaptcha)) {
-            var response = grecaptcha.getResponse();
 
-            
-            if (response.length === 0) {
-                //reCaptcha not verified
-                exists = $(target+' .alert-recaptcha').length;
-                if (!exists) {
-                    // alert doesn't exist yet. create it
-                    oops = createAlert('alert-recaptcha','Whoops! Please complete all fields above to continue to the next screen.');
-                    $(this).before(oops);
-                } else {
-                    // flash the alert as a reminder that they still need to verify
-                    $(target+' .alert-recaptcha').addClass('alert-reminder').delay(300).queue(function() {
-                        $(target+' .alert-recaptcha').removeClass('alert-reminder').dequeue();
-                    });
-                }
 
-            } else {
-                //reCaptch verified
-                $('.alert').remove();
-                removeclasses(target, "slide");
-                $(target).addClass('slide-' + slide);
-                $('[modal-slide-button].active').removeClass('active');
-                $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
-            }
-
-        }
-    */
-           
-
-    var box2 = $(this).parent().parent();
+    var box2 = $(this).parent();
+    //$(box2).addClass('THIS-IS-BOX2');
     if (box2.hasClass('box-2')) {
-        //console.log('true!');
+        //console.log('current slide is "box-2"');
         if (!$('#files').html().length) {
             exists = $(target + ' .alert-files').length;
             if (!exists) {
@@ -94,12 +99,13 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     }
 
     // delete this and uncomment the above when ready re-enable captcha
-    
+    /*
     $('.alert').remove();
     removeclasses(target, "slide");
     $(target).addClass('slide-' + slide);
     $('[modal-slide-button].active').removeClass('active');
     $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
-    
+    */
+
 
 });

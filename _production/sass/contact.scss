@@ -45,23 +45,17 @@
             }
         }
     }
+
     .btn[type="submit"] {
-        background-color: $bright-green;
         margin-bottom: 4rem;
-        color: $dark_green;
         font-weight: 400;
-        /*
-        box-shadow: 0 0 0 0 $bright-green;
-        &:hover {
-            box-shadow: 0 0 0 4px $bright-green;
-        }
-        */
     }
     @include media ('>md') {
         .btn[type="submit"] {
             margin-bottom: 0;
         }
     }
+
     footer {
         @include media('<sm') {
             .container-fluid {
@@ -90,11 +84,11 @@
             background-image: url(img/tree.svg);
             background-repeat: no-repeat;
             background-position: calc(25% + 54vw) bottom;
-            background-size: calc(50% + 30vw);
+            background-size: calc(35% + 30vw);
         }
         @include media('>md') {
-            background-position: 156% 105%;
-            background-size: 64%;
+            background-position: 120% 100%;
+            background-size: 35%;
         }
     }
 }

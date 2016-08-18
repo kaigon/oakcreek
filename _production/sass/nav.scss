@@ -52,9 +52,6 @@
             right: 0;
             letter-spacing: -0.25px;
         }
-        .close-button {
-            top: inherit;
-        }
         @include media('>sm') {
             width: 3rem;
             height: 2.8rem;
@@ -67,7 +64,7 @@
     nav {
         position: fixed;
         //right: 0;
-        left:100%;
+        left: 100%;
         top: 0;
         transform: translate3d(0, 0, 0);
         transition: transform .25s ease-out;
@@ -78,20 +75,6 @@
         display: table;
         text-align: center;
         border-left: 3px solid $bright_green;
-        //box-shadow: -3px 0 0 0 $off_green, -6px 0 0 0 $green;
-        //background: lighten($bright_tan, 0.8);
-    }
-    a {
-        cursor: pointer;
-        font-weight: 400;
-        //color: $tan;
-        display: table-row;
-        .icon-email_solid {
-            width: 1rem;
-            height: 1rem;
-            vertical-align: middle;
-            margin-right:0.5rem;
-        }
     }
     ul {
         list-style: none;
@@ -148,13 +131,42 @@
                 transition-delay: 700ms;
             }
         }
+        .btn--solid {
+            border-radius: 0;
+            .btn__container {
+                background-color: rgba(0, 0, 0, 0);
+                display: flex;
+                align-items: center;
+                border: 0;
+            }
+            .btn__icon {
+                position: relative;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                text-align: left;
+                margin-right:6px;
+            }
+            .btn__text {
+                padding: 0;
+                display: inline-block;
+            }
+            &:hover {
+                .btn__icon {
+                    transform:none;
+                }
+                .btn__text {
+                    transform:none;
+                }
+            }
+        }
     }
     @include media(">lg") {
         &.full {
             position: relative;
             height: auto;
-            left: initial;
-            top: initial;
+            left: auto;
+            top: auto;
             .nav-menu {
                 top: -10rem;
             }
@@ -163,8 +175,8 @@
                 display: block;
                 color: white;
                 position: relative;
-                left: initial;
-                top: initial;
+                left: auto;
+                top: auto;
                 width: 100%;
                 height: auto;
                 padding: 0;
@@ -184,42 +196,10 @@
                 vertical-align: middle;
                 &:last-of-type {
                     margin-right: 0;
-                    a {
-                        background-color: $brown;
-                        border-radius: 100px;
-                        box-shadow: 0 0 0 0 $brown;
-                        position: relative;
-                        text-align: center;
-                        overflow: hidden;
-                        transition: all 300ms ease;
-                        display: block;
-                        padding: 0.4rem 1.2rem;
-                        &:hover:after {
-                            width: 0;
-                        }
-                        .icon-email_solid {
-                            display: block;
-                            position: absolute;
-                            left: 0;
-                            right: 0;
-                            margin: 0 auto;
-                            transform: translateY(-250%);
-                            transition: all 300ms ease;
-                            top: 50%;
-                            width: 1.4rem;
-                            height: 1rem;
-                        }
-                        span {
-                            display: block;
-                            transition: all 300ms ease;
-                        }
+                    .btn--solid {
                         &:hover {
-                            background-color: $yellow;
-                            .icon-email_solid {
-                                transform: translateY(-50%);
-                            }
-                            span {
-                                transform: translateY(200%);
+                            .btn__container {
+                                background: $yellow;
                             }
                         }
                     }
@@ -254,8 +234,22 @@
     }
 }
 
-[data-viewing="services"] nav [data-scrollto="services"]{ color:$bright_green; }
-[data-viewing="customers"] nav [data-scrollto="customers"]{ color:$bright_green; }
-[data-viewing="guidelines"] nav [data-scrollto="guidelines"]{ color:$bright_green; }
-[data-viewing="about"] nav [data-scrollto="about"]{ color:$bright_green; }
-[data-viewing="contact"] nav [data-scrollto="contact"]{ color:$bright_green; }
+[data-viewing="services"] nav [data-scrollto="services"] .btn__text {
+    color: $bright_green;
+}
+
+[data-viewing="customers"] nav [data-scrollto="customers"] .btn__text {
+    color: $bright_green;
+}
+
+[data-viewing="guidelines"] nav [data-scrollto="guidelines"] .btn__text {
+    color: $bright_green;
+}
+
+[data-viewing="about"] nav [data-scrollto="about"] .btn__text {
+    color: $bright_green;
+}
+
+[data-viewing="contact"] nav [data-scrollto="contact"] .btn__text {
+    color: $bright_green;
+}

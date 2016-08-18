@@ -81,6 +81,7 @@
                 display: block;
             }
         }
+        /*
         .btn {
             //font-size: 1.4em;
             padding-bottom: 0.6rem;
@@ -88,6 +89,7 @@
             background-color: $off_green;
             color: darken($dark_teal, 6);
         }
+        */
         @include media('>sm') {
             text-align: center;
             h3 {
@@ -97,10 +99,12 @@
                     display: inline;
                 }
             }
+            /*
             .btn {
                 font-size: 1.4em;
                 margin-top: 1.4rem;
             }
+            */
         }
     }
 }

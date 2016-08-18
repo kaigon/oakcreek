@@ -39,7 +39,7 @@
         //json;
 
 
-        var type = $(this).html();
+        var type = $(this).find('.btn__text').html();
         var deets = '';
         $.each(guidelines_json, function(k, v) {
             if (v[0] === type) {

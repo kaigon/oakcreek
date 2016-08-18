@@ -24,6 +24,8 @@ button {
     outline: none;
 }
 
+
+/*
 a,
 .btn-trans.btn-link {
     text-decoration: none;
@@ -46,9 +48,31 @@ a,
         width: 100%;
     }
 }
+*/
 
 a {
     display: inline-block;
+    text-decoration: none;
+    color: $bright_tan;
+    &:link {
+        color: $bright-tan;
+    }
+    &:visited {
+        color: $bright-tan;
+    }
+    &:not(.btn) {
+        &:after {
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background-color: $bright-green;
+            transition: all 400ms ease;
+        }
+        &:hover:after {
+            width: 100%;
+        }
+    }
 }
 
 i {
@@ -87,10 +111,11 @@ section {
     padding-top: 6rem;
     padding-bottom: 6rem;
 }
-
+/*
 @include media(">md") {
     section {
         padding-top: 10rem;
         padding-bottom: 10rem;
     }
 }
+*/

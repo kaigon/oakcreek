@@ -1,22 +1,4 @@
-(function($){
-$(document).on('click', '.btn.cancel', function() {
-
-    var target = $(this).data('input-associated');
-    var tar = target.substring(1);
-    
-    $('.associated-with--'+tar).remove();
-
-    $(target).val('');
-    $('.label-upload').attr('for',tar);
-    $('h2 label').attr('for',tar);
-
-    if($('.modal--upload_files-container').hasClass('maxfiles-reached')){
-    	$('.modal--upload_files-container').removeClass('maxfiles-reached');
-    }
-
-});
-
-$(document).on('click', '[data-type="close"]:not(.cancel)', function() {
+(function($){$(document).on('click', '[data-type="close"]:not(.cancel)', function() {
     var target = $(this).data('target');
     var bodyClass = $(this).data('bodyclass');
     //console.log('target = '+target);
@@ -39,8 +21,8 @@ $(function() {
 	var form = $('#ajax-contact');
 
 	// Get the messages div.
-	var formMessages = $('#form-messages');
-	var formText = $('#form-messages-content');
+	var formMessages = $('.form-messages');
+	var formText = $('.form-messages-content');
 
 	// Set up an event listener for the contact form.
 	$(form).submit(function(e) {
@@ -86,7 +68,7 @@ $(function() {
 			if (response !== '') {
 				$(formText).text(response);
 			} else {
-				$(formText).text('Thank you! We will be in touch!');
+				$('.content__message').text('Thank you! We will be in touch!');
 			}
 			// Clear the form.
 			$('#name').val('');
@@ -215,7 +197,7 @@ $(document).on('focus', 'input[type="tel"]', function() {
         //json;
 
 
-        var type = $(this).html();
+        var type = $(this).find('.btn__text').html();
         var deets = '';
         $.each(guidelines_json, function(k, v) {
             if (v[0] === type) {
@@ -310,130 +292,11 @@ $(document).on('click', '[data-modal]', function(e) {
 
 });
 
-/*
-$(function() {
-
-    var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
-    var maxSize = 40000000;
-    var exists, oops;
-
-
-
-    //'use strict';
-    // Change this to the location of your server-side upload handler:
-    var url = window.location.hostname === 'localhost:8080' ?
-        '//oakcreek/' : 'files/uploaded/';
-    //$('#fileupload').fileupload({
-    $('#dnd_field').fileupload({
-            url: url,
-            dataType: 'json',
-            //autoUpload: false,
-            acceptFileTypes: /(\.|\/)(eps|pdf|tif|zip|rar|jpe?g|png)$/i,
-            maxFileSize: 40000000,
-            dragover: function(e, data) {
-                $('#upload_files').addClass('dragging');
-            },
-            dragleave: function(e, data) {
-                $('#upload_files').removeClass('dragging');
-            },
-            drop: function(e, data) {
-                $('#upload_files').removeClass('dragging');
-            },
-            add: function(e, data) {
-                //var uploadErrors = [];
-                var ext = data.originalFiles[0].name.split('.').pop().toLowerCase();
-                if ($.inArray(ext, acceptable) === -1) {
-                    // file is wrong extension. throw errors
-                    exists = $('#upload_files .alert-filetype');
-                    if (!exists.length) {
-                        // alert doesn't exist yet. create it
-                        oops = createAlert('alert-filetype', 'Invalid file type.');
-                        $('#files').before(oops);
-                    } else {
-                        $('#upload_files .alert-filetype').addClass('alert-reminder').delay(300).queue(function() {
-                            $('#upload_files .alert-filetype').removeClass('alert-reminder').dequeue();
-                        });
-                    }
-                } else if (data.originalFiles[0].size > maxSize) { //20 MB
-                    // file is too big. Throw errors
-                    var toobig = maxSize / 1000;
-                    toobig = toobig / 1000;
-                    exists = $('#upload_files .alert-toobig');
-                    if (!exists.length) {
-                        // alert doesn't exist yet. create it
-                        oops = createAlert('alert-toobig', 'File size cannot exceed '+toobig+'mb');
-                        $('#files').before(oops);
-                    } else {
-                        $('#upload_files .alert-toobig').addClass('alert-reminder').delay(300).queue(function() {
-                            $('#upload_files .alert-toobig').removeClass('alert-reminder').dequeue();
-                        });
-                    }
-                } else {
-                    // no errors / files are acceptable. proceed
-                    $.each(data.files, function(index, file) {
-                        var name = file.name;
-
-                        var li = '<li>';
-                        li += '<i class="icon-u-' + ext + '"></i>';
-                        li += '<span class="box">';
-                        li += file.name;
-                        li += '<small style="display:block;">' + formatFileSize(file.size) + '</small>';
-                        li += '</span>';
-                        li += '<button class="close-button btn-trans btn cancel" data-file-modified="' + file.lastModified + '" data-file-name="' + file.name + '" data-file-size="' + file.size + '" type="button"></button>';
-                        li += '</li>';
-                        $('#files').append(li);
-
-                    });
-
-                    exists = $('#upload_files .alert-filetype');
-                    if (exists.length) { exists.remove(); }
-                    exists = $('#upload_files .alert-toobig');
-                    if (exists.length) { exists.remove(); }
-                    exists = $('#upload_files .alert-files');
-                    if (exists.length) { exists.remove(); }
-                }
-
-            },
-            formData: function(form) {
-                return form.serializeArray();
-            },
-            done: function(e, data) {
-                data.context.text('Upload finished.');
-                $('.modal_upload > .box').addClass('slide-4').removeClass('slide-3');
-                $('.modal_upload .radials').remove();
-            },
-            progressall: function(e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('.progress-bar').css(
-                    'width',
-                    progress + '%'
-                );
-            }
-        })
-        .bind('fileuploadprocessfail', function(e, data) {
-        })
-        .prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
-
-
-    
-    $(document).on('click', 'button.cancel', function() {
-        
-            $(this).parent().remove();
-            
-        });
-
-});
-*/
 var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
 var maxSize = 40000000;
 var exists, oops;
-var $module = $('#upload_files');
-var $dropzone = $('#drop_area');
-var $dropit = $('.label-upload');
-var xhr = new XMLHttpRequest();
-//var xhr_file = null;
-var xhr_file = null;
+var dropit = $('.label-upload');
+var notify = $('#upload_files .box-5');
 var num = 0;
 var maxFiles = 5;
 
@@ -448,46 +311,45 @@ if (isAdvancedUpload) {
     $('body').addClass('no-dnd');
 }
 
-$('#fileupload5').after('<p class="notice hidden">Maximum of ' + maxFiles + ' files per upload.</p>');
-
-function xhr_send(f, e) {
-    if (f) {
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                $('#' + e).html(xhr.responseText);
-            }
-        };
-        xhr.open("POST", "upload.php?action=xhr");
-        xhr.setRequestHeader("Cache-Control", "no-cache");
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        xhr.setRequestHeader("X-File-Name", f.name);
-        xhr.send(f);
-    }
-}
-
-function dnd_hover(e) {
-    if ($('.modal_upload > .box').hasClass('slide-2')) {
-        e.stopPropagation();
-        e.preventDefault();
-        var t = e.type;
-        if (t === 'dragover') {
-            $module.addClass('dragging');
-            if ($(e.target).hasClass('label-upload')) {
-                $dropit.addClass('also_dragging');
-            } else {
-                $dropit.removeClass('also_dragging');
-            }
-        } else {
-            $module.removeClass('dragging');
-        }
-    }
-}
 
 
 
-function xhr_parse(f, e, i) {
-    if (f) {
-        var ext = f.name.split('.').pop().toLowerCase();
+
+
+
+Dropzone.autoDiscover = false;
+
+var li = '<li>';
+li += '<i class="icon-u-jpg"></i>';
+li += '<span class="box">';
+li += '<strong data-dz-name></strong>';
+li += '<small style="display:block;" data-dz-size></small>';
+li += '<small><em data-dz-errormessage></em></small>';
+li += '</span>';
+li += '<button data-dz-remove class="btn-trans btn cancel" type="button">';
+li += '<i class="icon-x"></i>';
+li += '</button>';
+li += '</li>';
+
+var myDropzone = new Dropzone("#upload_files", { // Make the whole body a dropzone
+    url: "dropzone_upload.php", // Set the url
+    previewsContainer: "#files",
+    clickable: "#fileupload1,.drop_area--label",
+    autoProcessQueue: false,
+    maxFiles: maxFiles,
+    parallelUploads: maxFiles,
+    previewTemplate: li,
+    maxFilesize: (maxSize / 1000000),
+    acceptedFiles: ".eps, .pdf, .tif, .zip, .rar, .jpeg, .jpg, .png",
+});
+
+
+myDropzone
+    .on("addedfile", function(file) {
+        //console.log('file:'+file);
+        var ext = file.name.split('.').pop().toLowerCase();
+        var nam = file.name;
+        var _this = this;
         if ($.inArray(ext, acceptable) === -1) {
             // file is wrong extension. throw errors
             exists = $('#upload_files .alert-filetype');
@@ -500,7 +362,10 @@ function xhr_parse(f, e, i) {
                     $('#upload_files .alert-filetype').removeClass('alert-reminder').dequeue();
                 });
             }
-        } else if (f.size > maxSize) { //20 MB
+            //console.log('wrong extension!');
+            stop();
+            _this.removeFile(file);
+        } else if (file.size > maxSize) { //20 MB
             // file is too big. Throw errors
             var toobig = maxSize / 1000;
             toobig = toobig / 1000;
@@ -514,17 +379,15 @@ function xhr_parse(f, e, i) {
                     $('#upload_files .alert-toobig').removeClass('alert-reminder').dequeue();
                 });
             }
+            //console.log('too big!');
+            stop();
+            _this.removeFile(file);
         } else {
             // no errors / files are acceptable. proceed
-            var li = '<li class="associated-with--fileupload' + i + '">';
-            li += '<i class="icon-u-' + ext + '"></i>';
-            li += '<span class="box">';
-            li += f.name;
-            li += '<small style="display:block;">' + formatFileSize(f.size) + '</small>';
-            li += '</span>';
-            li += '<button class="btn-trans btn cancel" data-input-associated="#fileupload' + i + '" data-file-modified="' + f.lastModified + '" data-file-name="' + f.name + '" data-file-size="' + f.size + '" type="button"><i class="icon-x"></i></button>';
-            li += '</li>';
-            $('#files').append(li);
+            var new_template = file.previewElement;
+            $(new_template).find('.icon-u-jpg').replaceWith('<i class="icon-u-' + ext + '"></i>');
+            $(new_template).append('<input type="hidden" class="hidden" name="file-to-upload[]" value="' + nam + '" />');
+            $(this.previewsContainer).append(new_template);
 
             exists = $('#upload_files .alert-filetype');
             if (exists.length) { exists.remove(); }
@@ -535,53 +398,181 @@ function xhr_parse(f, e, i) {
             exists = $('#upload_files .alert-max-number');
             if (exists.length) { exists.remove(); }
 
-            var c = $('#files li').length;
-
-            if (c < maxFiles) {
-                var ii = i + 1;
-                $('label[for^="fileupload"]').attr('for', 'fileupload' + ii);
-            } else {
-                $('.modal_upload article').addClass('maxfiles-reached');
-            }
-
         }
-    } else {
-        $(e).html("No file selected!");
-    }
-}
+    })
+    .on("removedfile", function(e) {
+        if ($('.modal--upload_files-container').hasClass('maxfiles-reached')) {
+            $('.modal--upload_files-container').removeClass('maxfiles-reached');
+        }
+        exists = $('#upload_files .alert-max-number');
+        if (exists.length) { exists.remove(); }
+        $('#drop_area ~ .notice').remove();
+    })
+    .on("maxfilesreached", function(file) {
+        $('.modal_upload article').addClass('maxfiles-reached');
+        $('#drop_area').after('<div class="notice">Maximum of 5 files allowed.</div>');
+    })
+    .on("maxfilesexceeded", function(file, e) {
+        $('#drop_area ~ .notice').remove();
+        exists = $('#upload_files .alert-max-number');
+        if (!exists.length) {
+            // alert doesn't exist yet. create it
+            oops = createAlert('alert-max-number', 'Cannot upload more than ' + maxFiles + ' files at a time.');
+            $('#files').before(oops);
+            //console.log('alert created');
+        } else {
+            $('#upload_files .alert-max-number').addClass('alert-reminder').delay(300).queue(function() {
+                $('#upload_files .alert-max-number').removeClass('alert-reminder').dequeue();
+            });
+            //console.log('alert deleted');
+        }
+    })
+    .on("dragleave", function(f) {
+        $(dropit).removeClass('also_dragging');
+        $('#upload_files').attr('data-dragging', '');
+    })
+    .on("dragover", function(f) {
+        $(dropit)
+            .on('dragover', function() {
+                $(dropit).addClass('also_dragging');
+            })
+            .on("dragleave", function(f) {
+                $(dropit).removeClass('also_dragging');
+            });
+        if ($('#upload_files .box.row').hasClass('slide-2')) {
+            // on slide 2. use default behavior
+        } else {
+            // not on slide 2. add class to prevent hover effects
+            $('#upload_files').attr('data-dragging', 'not-yet');
+        }
+    })
+    .on("drop", function(f) {
+        // make sure to remove classes
+        $(dropit).removeClass('also_dragging');
+    })
+    .on('processing', function(files, response) {
+        // fires when all files in the queue have been uploaded
+        //console.log('processingmultiple');
+        $('.modal_upload > .box').addClass('slide-4').removeClass('slide-3');
+        $('.modal_upload .radials').hide();
+    })
+    .on("totaluploadprogress", function(progress) {
+        $('.uploading .uploaded').css({ 'width': progress + '%' });
+        //document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+    })
+    .on("sending", function() {
+        // Gets triggered when the form is actually being sent.
+        // Hide the success button or the complete form.
+        //console.log('sending multiple');
+        $('#upload_files .btn').prop('disabled', true);
+    })
+    .on('uploadprogress', function(files, response, progress) {
+        // fires when all files in the queue have been uploaded
+        //console.log('uploadprogress');
+        //console.log("File progress", progress);
+    })
+    .on("success", function(files, response) {
+        // Gets triggered when the files have successfully been sent.
+        // Redirect user or notify of success.
+        //console.log('success sending!');
+        $('#upload_files .btn').prop('disabled', false);
+        $('.modal_upload > .box').addClass('slide-5').removeClass('slide-4');
+        //$('.modal_upload .radials').remove();
 
-$('input[name="my_field[]"]').on('change', function() {
-    xhr_file = this.files[0];
-    num = $(this).index();
-    xhr_parse(xhr_file, "#files", num);
-});
+        $(notify).find('h1 > span').text('Thank you!');
+        $(notify).find('h4').text('Your files have been uploaded successfully!');
+        $(notify).find('p').text('A member of our team has been notified and will begin processing the file(s) shortly. If we run into any issues we will contact you.');
+    })
+    .on("error", function(file, response) {
+        var ext = file.name.split('.').pop().toLowerCase();
+        var _this = this;
+        console.log(file);
+        console.log(response);
+        if ($.inArray(ext, acceptable) === -1) {
+            // file is wrong extension. throw errors
+            exists = $('#upload_files .alert-filetype');
+            if (!exists.length) {
+                // alert doesn't exist yet. create it
+                oops = createAlert('alert-filetype', 'Invalid file type.');
+                $('#files').before(oops);
+            } else {
+                $('#upload_files .alert-filetype').addClass('alert-reminder').delay(300).queue(function() {
+                    $('#upload_files .alert-filetype').removeClass('alert-reminder').dequeue();
+                });
+            }
+            //console.log('wrong extension!');
+            stop();
+            _this.removeFile(file);
+        } else if (file.size > maxSize) { //20 MB
+            // file is too big. Throw errors
+            var toobig = maxSize / 1000;
+            toobig = toobig / 1000;
+            exists = $('#upload_files .alert-toobig');
+            if (!exists.length) {
+                // alert doesn't exist yet. create it
+                oops = createAlert('alert-toobig', 'File size cannot exceed ' + toobig + 'mb');
+                $('#files').before(oops);
+            } else {
+                $('#upload_files .alert-toobig').addClass('alert-reminder').delay(300).queue(function() {
+                    $('#upload_files .alert-toobig').removeClass('alert-reminder').dequeue();
+                });
+            }
+            //console.log('too big!');
+            stop();
+            _this.removeFile(file);
+        } else if (response === "You can not upload any more files.") {
 
 
-document.getElementById("upload_files").ondragover = function(e) {
-    dnd_hover(e);
-};
-document.getElementById("upload_files").ondragleave = function(e) {
-    dnd_hover(e);
-};
-document.getElementById("upload_files").ondrop = function(e) {
-    dnd_hover(e);
+            stop();
+            _this.removeFile(file);
+        } else {
+            $('#upload_files .btn').prop('disabled', false);
+            $('.modal_upload > .box').addClass('slide-5').removeClass('slide-4');
+            //$('.modal_upload .radials').show();
 
-    var files = e.target.files || e.dataTransfer.files;
-    dnd_file = files[0];
-    xhr_parse(dnd_file, "dnd_status");
-};
+            $(notify).find('h1 > span').text('Uh oh!');
+            $(notify).find('h4').text('An error has occurred!');
+            $(notify).find('p').text("We're sorry, we could not upload your files at this time. Please contact us directly and we will assist you with delivering your files to our creative team another way.");
+            var r = '';
+            r += '<ul class="ul-list contact">';
+            r += '<li>';
+            r += '<i class="icon-phone"></i>';
+            r += '<a href="tel:4024737375">402.473.7375</a>';
+            r += '</li>';
+            r += '<li>';
+            r += '<i class="icon-email"></i>';
+            r += '<a href="mailto:sales@oakcreekprinting.com" target="_blank">sales@oakcreekprinting.com</a>';
+            r += '</li>';
+            r += '</ul>';
+            $(notify).append(r);
+        }
+
+    })
+    .on('queuecomplete', function(files, response) {
+        // fires when all files in the queue have been uploaded
+        var form = $('#modal-upload-form');
+        var formData = $(form).serialize();
+        $.ajax({
+                type: 'POST',
+                url: 'dropzone_email.php',
+                data: formData
+            })
+            .done(function(response) {
+                // Clear the form.
+                console.log(response);
+            })
+            .fail(function(response) {
+                console.log('failed! ' + response);
+            }); // end ajax
+
+    });
 
 
-
-$(document).on('click', '#upload-button', function(e) {
+$('#upload-button').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
-    xhr_send(xhr_file, "xhr_result");
-    $('.modal_upload > .box').addClass('slide-4').removeClass('slide-3');
-    $('.modal_upload .radials').remove();
+    myDropzone.processQueue();
 });
-
-
 
 function removeclasses(controlClass, classPrefix) {
     var classes = $(controlClass).attr("class").split(" ");
@@ -611,8 +602,7 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     num = getValidNumber(phone);
 
 
-    
-    /*
+
     if (num === false) {
         // invalid
         exists = $(target + ' .alert-phone').length;
@@ -626,43 +616,49 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
             });
         }
         return false;
+    } else {
+        exists = $(target + ' .alert-phone');
+        if (exists.length) { exists.remove(); }
+    }
+    
+
+    
+    if ($(this).data(recaptcha)) {
+        var response = grecaptcha.getResponse();
+
+
+        if (response.length === 0) {
+            //reCaptcha not verified
+            exists = $(target + ' .alert-recaptcha').length;
+            if (!exists) {
+                // alert doesn't exist yet. create it
+                oops = createAlert('alert-recaptcha', "Whoops! Please complete the reCAPTCHA field above to continue to the next screen.");
+                $(this).before(oops);
+            } else {
+                // flash the alert as a reminder that they still need to verify
+                $(target + ' .alert-recaptcha').addClass('alert-reminder').delay(300).queue(function() {
+                    $(target + ' .alert-recaptcha').removeClass('alert-reminder').dequeue();
+                });
+            }
+
+        } else {
+            //reCaptch verified
+            $('.alert').remove();
+            removeclasses(target, "slide");
+            $(target).addClass('slide-' + slide);
+            $('[modal-slide-button].active').removeClass('active');
+            $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
+        }
+
     }
 
 
-        if ($(this).data(recaptcha)) {
-            var response = grecaptcha.getResponse();
 
-            
-            if (response.length === 0) {
-                //reCaptcha not verified
-                exists = $(target+' .alert-recaptcha').length;
-                if (!exists) {
-                    // alert doesn't exist yet. create it
-                    oops = createAlert('alert-recaptcha','Whoops! Please complete all fields above to continue to the next screen.');
-                    $(this).before(oops);
-                } else {
-                    // flash the alert as a reminder that they still need to verify
-                    $(target+' .alert-recaptcha').addClass('alert-reminder').delay(300).queue(function() {
-                        $(target+' .alert-recaptcha').removeClass('alert-reminder').dequeue();
-                    });
-                }
 
-            } else {
-                //reCaptch verified
-                $('.alert').remove();
-                removeclasses(target, "slide");
-                $(target).addClass('slide-' + slide);
-                $('[modal-slide-button].active').removeClass('active');
-                $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
-            }
-
-        }
-    */
-           
-
-    var box2 = $(this).parent().parent();
+    var box2 = $(this).parent();
+    //$(box2).addClass('THIS-IS-BOX2');
     if (box2.hasClass('box-2')) {
-        //console.log('true!');
+        //console.log('current slide is "box-2"');
         if (!$('#files').html().length) {
             exists = $(target + ' .alert-files').length;
             if (!exists) {
@@ -679,13 +675,14 @@ $(document).on('click', '[modal-slide-button]:not(".disabled"):not(".active")', 
     }
 
     // delete this and uncomment the above when ready re-enable captcha
-    
+    /*
     $('.alert').remove();
     removeclasses(target, "slide");
     $(target).addClass('slide-' + slide);
     $('[modal-slide-button].active').removeClass('active');
     $('[data-slideto=' + slide + ']').addClass('active').removeClass('disabled');
-    
+    */
+
 
 });
 

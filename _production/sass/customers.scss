@@ -3,11 +3,11 @@
 .customers {
     background: $bright_tan;
     text-align: left;
-    color:$dark_tan;
+    color: $dark_tan;
     h2 {
-        margin-bottom:4rem;
-        @include media('>sm'){
-            margin-bottom:6rem;
+        margin-bottom: 4rem;
+        @include media('>sm') {
+            margin-bottom: 6rem;
         }
         &:after {
             display: none;
@@ -15,32 +15,36 @@
     }
     h3 {
         margin: 3rem auto 1.5rem;
-        @include media('>sm'){
-            margin:4rem auto 1.5rem;
+        @include media('>sm') {
+            margin: 4rem auto 1.5rem;
         }
     }
     figure {
         margin: 0 auto 2rem;
         text-align: left;
         padding-right: 1rem;
+        max-width: 200px;
         img {
-            max-height:100px;
+            max-height: 80px;
         }
     }
+    /*
     .btn {
         background: $dark-green;
         box-shadow: 0 0 0 0 $dark-green;
         &:hover {
             box-shadow: 0 0 0 4px $dark-green;
         }
-
     }
+    */
 }
 
 @include media('<sm') {
-    .customers .col-xs-6:nth-of-type(even) figure {
-        padding-left: 1rem;
-        padding-right: 0;
+    .customers {
+        .col-xs-6:nth-of-type(even) figure {
+            padding-left: 1rem;
+            padding-right: 0;
+        }
     }
 }
 
@@ -49,9 +53,22 @@
         text-align: center;
         figure {
             text-align: center;
-            padding-left: calc(1rem + 1vw);
-            padding-right: calc(1rem + 1vw);
+            //padding-left: calc(1rem + 1vw);
+            //padding-right: calc(1rem + 1vw);
             margin-bottom: calc(2rem + 2vh);
+        }
+    }
+}
+
+@include media('>lg') {
+    .customers {
+        main.container-fluid {
+            .row {
+                justify-content: center;
+                .flex-col-5x {
+                    flex: 0 0 20%;
+                }
+            }
         }
     }
 }

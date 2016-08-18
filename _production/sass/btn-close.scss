@@ -13,6 +13,7 @@
     visibility: hidden;
     opacity: 0;
     transition: all 200ms ease;
+    position:absolute;
     &:before,
     &:after {
         width: $width;
@@ -42,4 +43,5 @@
 .on .close-button {
     visibility: visible;
     opacity: 1;
+    position:absolute;
 }

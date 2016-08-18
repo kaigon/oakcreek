@@ -4,6 +4,7 @@
     display: block;
 }
 
+$boxes:5;
 .modal_upload {
     text-align: center;
     color: $tan;
@@ -13,7 +14,7 @@
     margin: auto;
     width: 100%;
     > .box {
-        width: 400%;
+        width: 100% * $boxes;
         position: relative;
         transition: all 500ms ease;
         transform: translateY(0%);
@@ -21,46 +22,112 @@
             transition: all 500ms ease;
             opacity: 0;
             visibility: hidden;
+            flex: 0 0 auto;
+            padding-right: .5rem;
+            padding-left: .5rem;
+            -webkit-flex-basis: (100% / $boxes);
+            -ms-flex-preferred-size: (100% / $boxes);
+            flex-basis: (100% / $boxes);
+            max-width: (100% / $boxes);
         }
-        > .box-1 {
+        > [class^="box-"].box-1 {
             opacity: 1;
             visibility: visible;
         }
         &.slide-2 {
-            transform: translateX(-25%);
-            > .box-1,
-            > .box-3,
-            > .box-4 {
+            transform: translateX(-(100% / $boxes));
+            > [class^="box-"]:not(.box-2) {
                 opacity: 0;
                 visibility: hidden;
             }
-            > .box-2 {
+            > [class^="box-"].box-2 {
                 opacity: 1;
                 visibility: visible;
             }
         }
         &.slide-3 {
-            transform: translateX(-50%);
-            > .box-1,
-            > .box-2,
-            > .box-4 {
+            transform: translateX(-(100% / $boxes) * 2);
+            > [class^="box-"]:not(.box-3) {
                 opacity: 0;
                 visibility: hidden;
             }
-            > .box-3 {
+            > [class^="box-"].box-3 {
                 opacity: 1;
                 visibility: visible;
             }
         }
         &.slide-4 {
-            transform: translateX(-75%);
-            > .box-1,
-            > .box-2,
-            > .box-3 {
+            transform: translateX(-(100% / $boxes) * 3);
+            > [class^="box-"]:not(.box-4) {
                 opacity: 0;
                 visibility: hidden;
             }
-            > .box-4 {
+            > [class^="box-"].box-4 {
+                opacity: 1;
+                visibility: visible;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                max-height: 70vh;
+                .uploading {
+                    margin: 0 auto;
+                }
+                i {
+                    width: 60px;
+                    height: 60px;
+                    display: inline-block;
+                    margin: 0 auto;
+                    border-radius: 50%;
+                    border: 0.5rem solid #FFE0A6;
+                    border-top-color: #FFA500;
+                    animation: rotate 1.5s infinite linear;
+                }
+                .progressbar {
+                    display: block;
+                    width: 100%;
+                    max-width: 300px;
+                    margin: 2em auto 0;
+                    height: 6px;
+                    border-radius: 3px;
+                    background-color: mix($off-white, $light_green, 80%);
+                    position: relative;
+                    overflow: hidden;
+                    .uploaded {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        height: inherit;
+                        background: $light_green;
+                    }
+                }
+            }
+        }
+        &.slide-5 {
+            transform: translateX(-(100% / $boxes) * 4);
+            > [class^="box-"]:not(.box-5) {
+                opacity: 0;
+                visibility: hidden;
+            }
+            > [class^="box-"].box-5 {
+                opacity: 1;
+                visibility: visible;
+                ul {
+                    margin-top: 1em;
+                }
+                li {
+                    display: inline-block;
+                    padding: 0 40px;
+                }
+            }
+        }
+        &.slide-6 {
+            transform: translateX(-(100% / $boxes) * 5);
+            > [class^="box-"]:not(.box-6) {
+                opacity: 0;
+                visibility: hidden;
+            }
+            > [class^="box-"].box-6 {
                 opacity: 1;
                 visibility: visible;
             }
@@ -74,7 +141,7 @@
         margin: 3rem 0 2rem -1rem;
         display: inline-block;
     }
-    fieldset {
+    .fieldset {
         margin: 1.4rem auto 2rem;
         padding: 0;
         &:last-of-type {
@@ -149,20 +216,18 @@
         span {
             display: none;
         }
-        
     }
     h5 {
         margin-bottom: 3px;
     }
-    
     .label-upload {
-        display:none;
+        display: none;
     }
     .box-1 h2 {
         margin-bottom: 1rem;
     }
     p {
-        line-height: 1.2rem;
+        //line-height: 1.2rem;
     }
     article ~ p {
         max-width: 400px;
@@ -171,7 +236,6 @@
     small {
         font-weight: 300;
     }
-    
     .btn[modal-slide-button] {
         overflow: hidden;
         &:hover {
@@ -185,60 +249,64 @@
     .btn[type="submit"] {
         background-color: $teal;
     }
-    .files > li {
-        text-align: left;
-        padding-left: 3.4em;
-        position: relative;
-        line-height: 1.4rem;
-        padding-top: 0;
-        padding-bottom: 1.8rem;
-        border-bottom: 1px solid #BABA9D;
-        margin: 1.4rem 0 0;
-        .btn.cancel {
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: 2;
-            width: 25px;
-            height: 25px;
-            padding: 0;
-            border: 0;
-            &:hover {
-                transform: rotateY(180deg);
-            }
-            > .icon-x {
-                width: inherit;
-                height: inherit;
-            }
-        }
-        &:last-of-type {
-            border-bottom: 0;
-            margin-bottom: 1.4rem;
-        }
-        &:first-of-type {
+    .files {
+        max-width: 490px;
+        margin: 0 auto;
+        > li {
+            text-align: left;
+            padding-left: 3.4em;
+            position: relative;
+            line-height: 1.4rem;
             padding-top: 0;
-            .close-button {
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid #BABA9D;
+            margin: 1.4rem 0 0;
+            .btn.cancel {
+                position: absolute;
+                right: 0;
                 top: 0;
+                z-index: 2;
+                width: 25px;
+                height: 25px;
+                padding: 0;
+                border: 0;
+                &:hover {
+                    transform: rotateY(180deg);
+                }
+                > .icon-x {
+                    width: inherit;
+                    height: inherit;
+                }
             }
-        }
-        span {
-            text-overflow: ellipsis;
-            width: calc(100% - 30px);
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        > i[class^="icon-"] {
-            width: 3em;
-            height: 3em;
-            position: absolute;
-            left: 0;
-            background-size: contain;
+            &:last-of-type {
+                border-bottom: 0;
+                margin-bottom: 1.4rem;
+            }
+            &:first-of-type {
+                padding-top: 0;
+                .close-button {
+                    top: 0;
+                }
+            }
+            span {
+                text-overflow: ellipsis;
+                width: calc(100% - 30px);
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            > i[class^="icon-"] {
+                width: 3em;
+                height: 3em;
+                position: absolute;
+                left: 0;
+                background-size: contain;
+            }
         }
     }
 }
 
-.modal.dragging {
+.modal.dz-drag-hover:not([data-dragging="not-yet"]) {
     background-color: darken($off-white, 5);
     .label-upload {
         background-color: $white;
@@ -279,25 +347,26 @@
     }
 }
 
-.maxfiles-reached {
-    .label-upload {
-        transform: scale(0);
-        height: 0;
-        margin-top: 0;
-    }
-    ~ h2 {
-        font-size: 0;
-    }
-    .notice {
-        display: block;
-        color: $light-brown;
-        padding: 12px 18px;
-        background-color: $off-white;
-        display: inline-block;
-        margin-bottom: 24px;
+body {
+    .maxfiles-reached {
+        .label-upload {
+            transform: scale(0);
+            height: 0;
+            margin-top: 0;
+        }
+        ~ h2 {
+            font-size: 0;
+        }
+        .notice {
+            display: block;
+            color: $light-brown;
+            padding: 12px 18px;
+            background-color: $off-white;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
     }
 }
-
 
 .has-dnd {
     .label-upload {
@@ -355,14 +424,16 @@
             line-height: 0;
         }
     }
-    h2 {
-        span {
-            display: block;
-        }
-        @include media('>sm') {
-            margin-top: 0;
-            label {
-                text-transform: none;
+    .modal_upload {
+        h2 {
+            span {
+                display: block;
+            }
+            @include media('>sm') {
+                margin-top: 0;
+                label {
+                    text-transform: none;
+                }
             }
         }
     }

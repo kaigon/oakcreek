@@ -34,16 +34,89 @@ textarea {
 }
 
 #ajax-contact {
+    perspective: 38em;
+    .content {
+        transform-style: preserve3d;
+        transition: all 400ms ease;
+        &--success {
+            transform-style: preserve3d;
+            transform: rotateY(90deg);
+            transition: all 400ms ease 400ms;
+            background-color: rgba(241, 247, 220, 0.92);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            .content__reversed {
+                transform: rotateY(180deg);
+                width: 100%;
+                flex: 0 0 1;
+            }
+            $circle-size: 120px;
+            $check-height: $circle-size/2;
+            $check-width: $check-height/2;
+            $check-left: $circle-size/6;
+            $check-thickness: $circle-size/10;
+            .checkmark {
+                border-radius: 50%;
+                width: $circle-size;
+                height: $circle-size;
+                width: $circle-size;
+                height: $circle-size;
+                border-radius: 50%;
+                background: $teal;
+                position: relative;
+                .check {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    top: -($check-thickness);
+                    bottom: 0;
+                    width: 50%;
+                    height: 50%;
+                    &:after {
+                        transform: scaleX(-1) rotate(135deg);
+                        opacity: 1;
+                        height: 100%;
+                        width: 50%;
+                        transform-origin: center;
+                        border-right: $check-thickness solid #FFF;
+                        border-top: $check-thickness solid #FFF;
+                        content: '';
+                        left: 0;
+                        top: 0;
+                        position: absolute;
+                        right: 0;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+    &.flipped {
+        .content {
+            transform: rotateY(90deg);
+            &--success {
+                transform: rotateY(180deg);
+                background: #fff;
+            }
+        }
+    }
     input,
     textarea {
-        background: rgba($bright_tan,0.92);
+        background: rgba($bright_tan, 0.92);
         border: 0;
-        box-shadow:none;
-        font-size:1rem;
+        box-shadow: none;
+        font-size: 1rem;
         @include media('>sm') {
             box-shadow: 0 0 0 1px rgba($tan, 0.2), 0 3px 0 0 $bright_green;
-            background-color: rgba($white,0.92);
-            font-size:1em;
+            //background-color: rgba($white,0.92);
+            font-size: 1em;
             &:hover {
                 background: rgba($bright_yellow, 0.92);
             }
@@ -63,22 +136,18 @@ textarea {
     }
 }
 
-
-
-#form-messages {
+.form-messages {
     text-align: left;
     transition: all 300ms ease;
     .alert {
         display: none;
         margin: 0 0 1rem;
     }
-    
     &.error {
         .alert {
             display: table;
         }
     }
-    
     &.success {
         .alert {
             background-color: #BEFFBF;

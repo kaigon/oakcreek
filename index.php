@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-<?php date_default_timezone_set("America/Chicago"); ?>
+<?php date_default_timezone_set('UTC'); ?>
+
 <head>
     <meta charset="UTF-8">
     <title>Oakcreek Printing and Mailing</title>
@@ -13,35 +14,35 @@
     <link rel="stylesheet" href="style.css">
     <script>
     /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
-    (function(e) { function t(t, n, r, o) { "use strict"; function a() { for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0); e ? i.media = r || "all" : setTimeout(a) } var i = e.document.createElement("link"), l = n || e.document.getElementsByTagName("script")[0], u = e.document.styleSheets; return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i } var n = function(r, o) { "use strict"; if (r && 3 === r.length) { var a = e.navigator, i = e.Image, l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")), u = new i; u.onerror = function() { n.method = "png", n.href = r[2], t(r[2]) }, u.onload = function() { var e = 1 === u.width && 1 === u.height, a = r[e && l ? 0 : e ? 1 : 2]; n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o) }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon" } }; n.loadCSS = t, e.grunticon = n })(this); (function(e, t) { "use strict"; var n = t.document, r = "grunticon:", o = function(e) { if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e(); else { var t = !1; n.addEventListener("readystatechange", function() { t || (t = !0, e()) }, !1) } }, a = function(e) { return t.document.querySelector('link[href$="' + e + '"]') }, c = function(e) { var t, n, o, a, c, i, u = {}; if (t = e.sheet, !t) return u; n = t.cssRules ? t.cssRules : t.rules; for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i); return u }, i = function(e) { var t, o, a; o = "data-grunticon-embed"; for (var c in e) if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length) for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o); return t }, u = function(t) { "svg" === e.method && o(function() { i(c(a(e.href))), "function" == typeof t && t() }) }; e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u })(grunticon, this); grunticon(["img/icons.data.svg.css", "img/icons.data.png.css", "img/icons.fallback.css"], grunticon.svgLoadedCallback);
-
+    (function(e) { function t(t, n, r, o) { "use strict"; function a() { for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0); e ? i.media = r || "all" : setTimeout(a) } var i = e.document.createElement("link"), l = n || e.document.getElementsByTagName("script")[0], u = e.document.styleSheets; return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i } var n = function(r, o) { "use strict"; if (r && 3 === r.length) { var a = e.navigator, i = e.Image, l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")), u = new i; u.onerror = function() { n.method = "png", n.href = r[2], t(r[2]) }, u.onload = function() { var e = 1 === u.width && 1 === u.height, a = r[e && l ? 0 : e ? 1 : 2]; n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o) }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon" } }; n.loadCSS = t, e.grunticon = n })(this); (function(e, t) { "use strict"; var n = t.document, r = "grunticon:", o = function(e) { if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e(); else { var t = !1; n.addEventListener("readystatechange", function() { t || (t = !0, e()) }, !1) } }, a = function(e) { return t.document.querySelector('link[href$="' + e + '"]') }, c = function(e) { var t, n, o, a, c, i, u = {}; if (t = e.sheet, !t) return u; n = t.cssRules ? t.cssRules : t.rules; for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i); return u }, i = function(e) { var t, o, a; o = "data-grunticon-embed"; for (var c in e) if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length) for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o); return t }, u = function(t) { "svg" === e.method && o(function() { i(c(a(e.href))), "function" == typeof t && t() }) }; e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u })(grunticon, this);
+    grunticon(["img/icons.data.svg.css", "img/icons.data.png.css", "img/icons.fallback.css"], grunticon.svgLoadedCallback);
     </script>
     <noscript>
         <link href="img/icons.fallback.css" rel="stylesheet">
     </noscript>
 </head>
 <?php
-// Include and instantiate the class.
-require_once 'Mobile_Detect.php';
-$detect = new Mobile_Detect;
-$mobile = false;
-$phone = false;
-$tablet = false;
-$class = 'class="';
-if ( $detect->isMobile() ) {
-    $mobile = true; 
-    $class.="is_mobile ";
-}
-if( $detect->isMobile() && !$detect->isTablet() ){
- $phone = true; 
- $class.="is_phone ";
-}
-if ( $detect->isTablet() ) {
-    $tablet = true; 
-    $class.="is_tablet ";
-}
-$class.='"';
-?>
+    // Include and instantiate the class.
+    require_once 'Mobile_Detect.php';
+    $detect = new Mobile_Detect;
+    $mobile = false;
+    $phone = false;
+    $tablet = false;
+    $class = 'class="';
+    if ( $detect->isMobile() ) {
+        $mobile = true; 
+        $class.="is_mobile ";
+    }
+    if( $detect->isMobile() && !$detect->isTablet() ){
+     $phone = true; 
+     $class.="is_phone ";
+    }
+    if ( $detect->isTablet() ) {
+        $tablet = true; 
+        $class.="is_tablet ";
+    }
+    $class.='"';
+    ?>
 
     <body <?php if($mobile===true || $phone===true || $tablet===true){echo $class;} ?>>
         <header class="header">
@@ -61,24 +62,34 @@ $class.='"';
                         <nav>
                             <ul>
                                 <li>
-                                    <a data-scrollto="services" title="Services">Services</a>
+                                    <a data-scrollto="services" title="Services" class="btn btn--link btn--small btn--trans">
+                                        <span class="btn__container">
+                                                <span class="btn__text">
+                                                    Services
+                                                </span>
+                                        </span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a data-scrollto="products" title="Products">Products</a>
+                                    <a data-scrollto="guidelines" title="Guidelines" class="btn btn--link btn--small btn--trans">
+                                        <span class="btn__container">
+                                                <span class="btn__text">
+                                                    Guidelines
+                                                </span>
+                                        </span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a data-scrollto="guidelines" title="Guidelines">Guidelines</a>
-                                </li>
-                                <li>
-                                    <a data-scrollto="about" title="About us">About us</a>
-                                </li>
-                                <li>
-                                    <a data-scrollto="contact" title="Contact us">
-                                        <i class="icon-email_solid"></i> <span>Contact us</span>
+                                    <a data-scrollto="contact" title="Contact Us" class="btn btn--small btn--link btn--solid btn--icon btn--hover--down">
+                                        <span class="btn__container">
+                                                <i class="btn__icon icon-email_solid"></i>
+                                                <span class="btn__text">
+                                                    Contact Us
+                                                </span>
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
-                            <!--<div class="icon-logo"></div>-->
                         </nav>
                     </div>
                 </div>
@@ -88,15 +99,19 @@ $class.='"';
             <main class="container-fluid">
                 <div class="row bottom-xs">
                     <div class="col-xs-12 col-md-8">
-                        <?php if($is_phone===true): ?>
+                        <?php if($phone===true): ?>
                         <h1>Get it <span><strong>done</strong>.</span></h1>
                         <h3>Whatever your project. Start to finish. Regardless of scale.</h3>
                         <?php else: ?>
                         <h1>Get your <span>project <strong>done</strong>.</span></h1>
                         <h3>Start to finish. <span>Regardless of scale.</span></h3>
                         <?php endif; ?>
-                        <button type="button" class="btn" data-scrollto="contact">
-                            <i class="icon-email_solid"></i><span>Request a <em class="hidden-xs">free</em> consultation</span>
+                        <button type="button" class="btn btn--solid btn--hover--grow btn--dark-teal btn--icon" data-scrollto="contact">
+                            <div class="btn__container">
+                                <div class="btn__text">
+                                    <i class="icon-email_solid"></i><span>Request a <em class="hidden-xs">free</em> consultation</span>
+                                </div>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -122,33 +137,6 @@ $class.='"';
             <?php endif; ?>
         </section>
         <section class="services" id="services">
-            <!--
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <fieldset class="left">
-                            <legend>Multiple upload</legend>
-                            <p>Pick up some files to upload, and press "upload" </p>
-                            <form name="form3" enctype="multipart/form-data" method="post" action="upload.php">
-                                <p>
-                                    <input type="file" size="32" name="my_field[]" value="" />
-                                </p>
-                                <p>
-                                    <input type="file" size="32" name="my_field[]" value="" />
-                                </p>
-                                <p>
-                                    <input type="file" size="32" name="my_field[]" value="" />
-                                </p>
-                                <p class="button">
-                                    <input type="hidden" name="action" value="multiple" />
-                                    <input type="submit" name="Submit" value="upload" />
-                                </p>
-                            </form>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-            -->
             <header class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 col-md-6">
@@ -165,16 +153,18 @@ $class.='"';
                                 <div class="box-front">
                                     <i class="icon-s-print"></i>
                                     <h4><strong>Printing</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    <p>Our printing press is one of only 16 other operational flexo publication presses in the United States. It produces a better quality, clean print with absolutely no ink rub off. It's also environmentally friendly, using water-based inks and produces substantially less waste than other presses.</p>
                                 </div>
+                                <?php /*
                                 <div class="box-back">
                                     <a href="#" class="row middle-md icon-products_bg" data-modal="modal_printing">
                                         <span class="col-xs-12">
-                                        View available products
-                                        <i class="icon-plus"></i>
-                                    </span>
+                                            View available products
+                                            <i class="icon-plus"></i>
+                                        </span>
                                     </a>
                                 </div>
+                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -184,16 +174,18 @@ $class.='"';
                                 <div class="box-front">
                                     <i class="icon-s-mailing"></i>
                                     <h4><strong>Mailing</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    <p>We are one of the largest mailers in the area, with just over one million pieces mailed out of our facility each month. Our knowledgeable staff handles all USPS relations so you don’t have to, allowing you to prevent unnecessary delays and additional costs.</p>
                                 </div>
+                                <?php /*
                                 <div class="box-back">
                                     <a href="#" class="row middle-md icon-products_bg" data-modal="modal_mailing">
                                         <span class="col-xs-12">
-                                    View available products
-                                    <i class="icon-plus"></i>
-                                </span>
+                                            View available products
+                                            <i class="icon-plus"></i>
+                                        </span>
                                     </a>
                                 </div>
+                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -203,16 +195,18 @@ $class.='"';
                                 <div class="box-front">
                                     <i class="icon-s-design"></i>
                                     <h4><strong>Design</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    <p>Whether making final adjustments, or starting from a blank page, our experienced design department can assist you with every aspect of your project. All files are converted digitally using our state-of-the-art MacDermid computerized plate making system.</p>
                                 </div>
+                                <?php /*
                                 <div class="box-back">
                                     <a href="#" class="row middle-md icon-products_bg" data-modal="modal_design">
                                         <span class="col-xs-12">
-                                    View available products
-                                    <i class="icon-plus"></i>
-                                </span>
+                                            View available products
+                                            <i class="icon-plus"></i>
+                                        </span>
                                     </a>
                                 </div>
+                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -222,35 +216,18 @@ $class.='"';
                                 <div class="box-front">
                                     <i class="icon-s-binding"></i>
                                     <h4><strong>Binding</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    <p>Our talents don’t end with exceptional printing and distribution. We offer a wide selection of binding styles and cover options as well, and we can help you choose the best style to ensure a long life for your product.</p>
                                 </div>
+                                <?php /*
                                 <div class="box-back">
                                     <a href="#" class="row middle-md icon-products_bg" data-modal="modal_binding">
                                         <span class="col-xs-12">
-                                    View available products
-                                    <i class="icon-plus"></i>
-                                </span>
+                                            View available products
+                                            <i class="icon-plus"></i>
+                                        </span>
                                     </a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                        <div class="box">
-                            <div class="box-flip">
-                                <div class="box-front">
-                                    <i class="icon-s-shipping"></i>
-                                    <h4><strong>Shipping</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </div>
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_shipping">
-                                        <span class="col-xs-12">
-                                    View available products
-                                    <i class="icon-plus"></i>
-                                </span>
-                                    </a>
-                                </div>
+                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -260,8 +237,8 @@ $class.='"';
                                 <div class="box-front">
                                     <i class="icon-s-supplies"></i>
                                     <h4><strong>Supplies</strong></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </div>
+                                    <p>Packaging and shippings supplies come in a wide variety of shapes and sizes. Our experienced team can help ensure you make the right choice, saving you time and money while ensuring a safe, speedy delivery of your product.</p>
+                                <?php /*</div>
                                 <div class="box-back">
                                     <a href="#" class="row middle-md icon-products_bg" data-modal="modal_supplies">
                                         <span class="col-xs-12">
@@ -270,9 +247,10 @@ $class.='"';
                                 </span>
                                     </a>
                                 </div>
-                            </div>
+                            </div>*/ ?>
                         </div>
                     </div>
+                    
                 </div>
             </main>
         </section>
@@ -280,73 +258,48 @@ $class.='"';
             <main class="container-fluid">
                 <h2>Our <strong>Happy</strong> Customers</h2>
                 <div class="row middle-xs">
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/bds.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/columbus.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/fremont.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/nelnet.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/gallup.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/journalstar.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/les.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/lincolnliving.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/lps.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/parksandrec.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/plattsmouth.png" alt="">
-                        </figure>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3">
-                        <figure>
-                            <img src="img/customers/ymca.png" alt="">
-                        </figure>
-                    </div>
+                    <?php 
+                        $customers = array( 
+                            array("Beatrice Daily Sun","bds.png"),
+                            array("The Columbus Telegram","columbus.png"),
+                            array("Fremont Tribune","fremont.png"),
+                            array("Lincoln Journal Star","journalstar.png"),
+                            array("The Plattsmouth Journal","plattsmouth.png"),
+                            array("Lincoln Living","lincolnliving.png"),
+                            array("Southeast Community College","scc.png"),
+                            array("Midwest Messenger","messenger.png"),
+                            //array("L Magazine","lmagazine.png"),
+                            //array("Gallup","gallup.png"),
+                            //array("Nelnet","nelnet.png"),
+                            //array("LES","les.png"),
+                            //array("Lincoln Public Schools","lps.png"),
+                            //array("Lincoln Parks and Rec","parksandrec.png"),
+                            //array("YMCA","ymca.png"),
+                        );
+                       
+                        shuffle($customers);
+                        
+                        foreach($customers as $k => $v){
+                            echo '<div class="col-xs-6 col-sm-4 col-md-3 flex-col-5x">';
+                            echo '<figure>';
+                            echo '<img src="img/customers/'.$v[1].'" alt="'.$v[0].'" title="'.$v[0].'">';
+                            echo '</figure>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </main>
             <footer class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12">
                         <h3>We helped them get it done. Discover how we can help you!</h3>
-                        <button type="button" class="btn">Request a <span>free</span> consultation</button>
+                        <button type="button" class="btn btn--green btn--hover--grow btn--solid" data-scrollto="contact">
+                            <div class="btn__container">
+                                <div class="btn__text">
+                                    Request a <span>free</span> consultation
+                                </div>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </footer>
@@ -363,18 +316,52 @@ $class.='"';
             <main class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-3 col-md-2 col-lg-3 guidelines_buttons">
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Fonts</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Hardware</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Software</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Formats</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Color</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Photos</button>
-                        <button type="button" data-guidelines-toggle class="btn btn-trans btn-sm btn-link">Templates</button>
-                        <p>
-                            <a href="files/pdf/guidelines.pdf" class="btn btn-sm btn-trans">
-                                <i class="icon-pdf"></i> View as pdf
-                            </a>
-                        </p>
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Fonts</div>
+                            </div>
+                        </button>
+                        <?php /*
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Hardware</div>
+                            </div>
+                        </button>
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Software</div>
+                            </div>
+                        </button>
+                        */ ?>
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Formats</div>
+                            </div>
+                        </button>
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Color</div>
+                            </div>
+                        </button>
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Photos</div>
+                            </div>
+                        </button>
+                        <?php /*
+                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
+                            <div class="btn__container">
+                                <div class="btn__text">Templates</div>
+                            </div>
+                        </button>
+                        <a href="files/pdf/guidelines.pdf" class="btn btn--small btn--trans btn--link">
+                            <span class="btn__container">
+                                        <span class="btn__text">
+                                            <i class="icon-pdf"></i>View as pdf
+                                        </span>
+                            </span>
+                        </a>
+                        */ ?>
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8 guidelines_articles">
                     </div>
@@ -384,10 +371,16 @@ $class.='"';
                 <div class="row">
                     <div class="col-xs-12">
                         <h3>Need to submit files to our creative team?</h3>
-                        <button type="button" class="btn" data-modal="upload_files">Upload project files</button>
-                        <button type="button" class="btn btn-invert btn-icon btn-icon_l" data-scrollto="contact" title="Contact us">
-                            <span>Got a question?</span>
-                            <i class="icon-email"></i>
+                        <button type="button" class="btn btn--solid btn--light-brown btn--hover--grow" data-modal="upload_files">
+                            <div class="btn__container">
+                                <span class="btn__text">Upload project files</span>
+                            </div>
+                        </button>
+                        <button type="button" class="btn btn--invert btn--icon btn--hover--left btn--light-brown" data-scrollto="contact" title="Contact us">
+                            <div class="btn__container">
+                                <span class="btn__text">Got a question?</span>
+                                <i class="btn__icon icon-email"></i>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -406,11 +399,11 @@ $class.='"';
             <main class="container-fluid">
                 <div class="row between-md">
                     <div class="col-xs-12 col-md-5">
-                        <h3>Talk to a specialist today and let us help you get your project done. We can't wait to work with you.</h3>
+                        <h3>Talk to a specialist today and let us help you get your project done. We look forward to working with you.</h3>
                         <ul class="ul-list">
                             <li>
                                 <i class="icon-phone"></i>
-                                <a href="tel:4024737138">402.473.7138</a>
+                                <a href="tel:4024737375">402.473.7375</a>
                             </li>
                             <li>
                                 <i class="icon-email"></i>
@@ -419,42 +412,54 @@ $class.='"';
                         </ul>
                     </div>
                     <div class="col-xs-12 col-md-6 col-md-push-1">
-                        <form id="ajax-contact" method="POST" action="mailer.php" accept-charset="utf-8" class="row end-md">
-                            <fieldset class="col-xs-12 col-sm-6">
-                                <legend class="required">Your name</legend>
-                                <input type="text" name="name" id="name" value="" placeholder="Your Name*" required>
-                            </fieldset>
-                            <fieldset class="col-xs-12 col-sm-6">
-                                <legend class="required">Email Address</legend>
-                                <input type="text" name="email" id="email" value="" placeholder="Email Address*" required>
-                            </fieldset>
-                            <fieldset class="col-xs-12 col-sm-6">
-                                <legend>Phone Number</legend>
-                                <input type="tel" name="phone" id="phone" maxlength="15" autocomplete="off" value="" placeholder="Phone Number" data-mask="(000) 000-0000">
-                            </fieldset>
-                            <fieldset class="col-xs-12 col-sm-6 hidden-xs">
-                                <legend>Your Company Name</legend>
-                                <input type="text" name="company" id="company" value="" placeholder="Company Name">
-                            </fieldset>
-                            <fieldset class="col-xs-12">
-                                <legend>Your Message</legend>
-                                <textarea required name="message" id="message" placeholder="Your Message*" rows="5"></textarea>
-                            </fieldset>
-                            <div class="col-xs-12" id="form-messages">
-                                <div class="alert alert-contact">
-                                    <div class="alert-col alert-pre">
-                                        <p>!</p>
-                                    </div>
-                                    <div class="alert-col alert-body">
-                                        <p id="form-messages-content"></p>
+                        <form id="ajax-contact" method="POST" action="mailer.php" accept-charset="utf-8" class="end-md">
+                            <div class="content row">
+                                <fieldset class="col-xs-12 col-sm-6">
+                                    <legend class="required">Your name</legend>
+                                    <input type="text" name="name" id="name" value="" placeholder="Your Name*" required>
+                                </fieldset>
+                                <fieldset class="col-xs-12 col-sm-6">
+                                    <legend class="required">Email Address</legend>
+                                    <input type="text" name="email" id="email" value="" placeholder="Email Address*" required>
+                                </fieldset>
+                                <fieldset class="col-xs-12 col-sm-6">
+                                    <legend>Phone Number</legend>
+                                    <input type="tel" name="phone" id="phone" maxlength="15" autocomplete="off" value="" placeholder="Phone Number" data-mask="(000) 000-0000">
+                                </fieldset>
+                                <fieldset class="col-xs-12 col-sm-6 hidden-xs">
+                                    <legend>Your Company Name</legend>
+                                    <input type="text" name="company" id="company" value="" placeholder="Company Name">
+                                </fieldset>
+                                <fieldset class="col-xs-12">
+                                    <legend>Your Message</legend>
+                                    <textarea required name="message" id="message" placeholder="Your Message*" rows="5"></textarea>
+                                </fieldset>
+                                <div class="col-xs-12 form-messages">
+                                    <div class="alert alert-contact alert-contact--fail">
+                                        <div class="alert-col alert-pre">
+                                            <p>!</p>
+                                        </div>
+                                        <div class="alert-col alert-body">
+                                            <p class="form-messages-content"></p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn--icon btn--solid btn--hover--up btn--bright-green btn--small" title="Submit">
+                                        <div class="btn__container">
+                                            <span class="btn__text">Submit</span>
+                                            <i class="btn__icon icon-email_solid"></i>
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-xs-12">
-                                <button type="submit" class="btn btn-sm btn-icon btn-icon_d">
-                                    <span>Submit</span>
-                                    <i class="icon-email_solid"></i>
-                                </button>
+                            <div class="content--success form-messages">
+                                <div class="content__reversed">
+                                    <i class="checkmark">
+                                        <span class="check"></span>
+                                    </i>
+                                    <p class="form-messages-content content__message"></p>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -494,14 +499,14 @@ $class.='"';
             </footer>
         </section>
         <?php 
-            include('inc/modal_upload.php'); 
-            include('inc/modal_printing.php');
-            include('inc/modal_mailing.php');
-            include('inc/modal_design.php');
-            include('inc/modal_binding.php');
-            include('inc/modal_shipping.php');
-            include('inc/modal_supplies.php');
-        ?>
+                include('inc/modal_upload.php'); 
+                include('inc/modal_printing.php');
+                include('inc/modal_mailing.php');
+                include('inc/modal_design.php');
+                include('inc/modal_binding.php');
+                include('inc/modal_shipping.php');
+                include('inc/modal_supplies.php');
+            ?>
         <!-- load jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script>
@@ -509,7 +514,7 @@ $class.='"';
         </script>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="js/vendor/custom-modernizr.js"></script>
-        <script src="js/production.min.js?<?php echo date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000)); ?>" async></script>
+        <script src="js/production.min.js" async></script>
         <script>
         (function(b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
