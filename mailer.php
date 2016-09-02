@@ -1,6 +1,6 @@
 <?php
     $subjectline = 'Oakcreek Contact Form submission from: ';
-    $my_email = 'jparks@journalstar.com';
+    $my_email = 'sales@oakcreekprinting.com';
 	//$my_email = 'ddymacek@journalstar.com';
     // My modifications to mailer script from:
     // http://blog.teamtreehouse.com/create-ajax-contact-form

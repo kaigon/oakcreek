@@ -45,7 +45,7 @@
         padding-top: 150px;
     }
     .btn {
-        margin-top:12px;
+        margin-top: 12px;
         [class*="icon-"] {
             transition: inherit;
             height: 13.5px;
@@ -53,13 +53,13 @@
             margin-right: 6px;
             width: 19px;
             @include media('>sm') {
-                height: 16.5px; 
-                width:24px;
-                margin-right:12px;
+                height: 16.5px;
+                width: 24px;
+                margin-right: 12px;
             }
         }
         em {
-            font-style:normal;
+            font-style: normal;
         }
     }
     > svg {

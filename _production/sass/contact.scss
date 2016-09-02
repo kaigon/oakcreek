@@ -45,7 +45,6 @@
             }
         }
     }
-
     .btn[type="submit"] {
         margin-bottom: 4rem;
         font-weight: 400;
@@ -55,23 +54,18 @@
             margin-bottom: 0;
         }
     }
-
     footer {
-        @include media('<sm') {
-            .container-fluid {
-                padding: 0;
-            }
-        }
         p {
-            padding-left: 1rem;
+            margin-bottom: 0.25rem;
         }
-        @include media('>sm') {
-            p {
-                padding-left: 0;
-            }
+        p:nth-of-type(2) {
+            display: flex;
+            align-items: center;
         }
         i[class*="icon-"] {
-            position: absolute;
+            width: 16px;
+            height: 24px;
+            margin-right: 8px;
         }
         @include media('<sm') {
             .embed-container_ar100 {

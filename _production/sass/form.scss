@@ -18,7 +18,21 @@ fieldset {
 }
 
 legend {
-    font-size: 0;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #BABA9D;
+    &.required:after {
+        content: '*';
+        color: #F00;
+        margin-left: 2px;
+    }
+}
+
+.placeholder {
+    legend {
+        font-size: 0;
+        margin-bottom: 0;
+    }
 }
 
 input,
@@ -34,13 +48,13 @@ textarea {
 }
 
 #ajax-contact {
-    perspective: 38em;
+    //perspective: 38em;
     .content {
-        transform-style: preserve3d;
+        //transform-style: preserve3d;
         transition: all 400ms ease;
         &--success {
-            transform-style: preserve3d;
-            transform: rotateY(90deg);
+            //transform-style: preserve3d;
+            //transform: rotateY(90deg);
             transition: all 400ms ease 400ms;
             background-color: rgba(241, 247, 220, 0.92);
             position: absolute;
@@ -51,6 +65,7 @@ textarea {
             display: flex;
             align-content: center;
             align-items: center;
+            /*
             .content__reversed {
                 transform: rotateY(180deg);
                 width: 100%;
@@ -96,8 +111,10 @@ textarea {
                     }
                 }
             }
+            */
         }
     }
+    /*
     &.flipped {
         .content {
             transform: rotateY(90deg);
@@ -107,6 +124,7 @@ textarea {
             }
         }
     }
+    */
     input,
     textarea {
         background: rgba($bright_tan, 0.92);

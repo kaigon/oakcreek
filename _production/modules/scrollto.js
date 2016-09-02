@@ -8,17 +8,24 @@ if(u.query.section){
 
 
 // smooth scroll navigation
-$('[data-scrollto]').click(function() {
+//$('[data-scrollto]').click(function() {
+$(document).on('click', '[data-scrollto]', function() {
+//$('.scrollto').click(function(){
+    //alert('clicked a button');
     var target = $(this).data('scrollto');
+    //console.log('browser is supposed to move to "'+target+'" section');
     var mobile = $('.nav-popout');
     if (mobile.hasClass('open')) {
         $(mobile).removeClass('open');
+        //console.log('.nav-popout has class of "open". removing said class');
     }
     $('html,body').animate({
         scrollTop: $('.' + target).offset().top
     }, 1000);
+    //console.log('moved browser');
 
     window.history.pushState(null, null, '?section='+target);
+    //console.log('told browser what section we are in now');
 
 });
 

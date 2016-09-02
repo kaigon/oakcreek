@@ -14,7 +14,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '_production/sass/',
-                    src: ['*.scss'],
+                    src: ['flexbox.scss', '*.scss'],
                     dest: '_production/sass/css/',
                     ext: '.css'
                 }]
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             },
             target: {
                 files: {
-                    'style.css': ['_production/vendor/css/normalize.css','_production/vendor/css/flexboxgrid.min.css','_production/sass/css/build/*.css'] // can merge multiple css files. ex: ['foo.css', 'bar.css']
+                    'style.css': ['_production/vendor/css/normalize.css', '_production/sass/css/build/*.css'] // can merge multiple css files. ex: ['foo.css', 'bar.css']
                 }
             }
         },
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
                     separator: "\n", //add a new line after each file
                 },
                 src: [
-                    //'_production/vendor/js/plugins/jquery.ui.widget.js',
+                    '_production/vendor/js/respond.js',
                     //'_production/vendor/js/plugins/jquery.iframe-transport.js',
                     //'_production/vendor/js/plugins/jquery.fileupload.js',
                     '_production/vendor/js/plugins/jquery.formatter.min.js',
@@ -95,6 +95,7 @@ module.exports = function(grunt) {
                 },
                 src: [
                     '_production/modules/*.js', // then grab all other js files (will be concatanated at end of file, below plugins)
+                    '_production/modules/modals/scrollto.js',
                     '_production/modules/modals/*.js',
                 ],
                 dest: '_production/build/scripts.js',
@@ -141,7 +142,8 @@ module.exports = function(grunt) {
                     "srcset",
                     "svgclippaths",
                     "svgfilters",
-                    "inlinesvg"
+                    "inlinesvg",
+                    "placeholder"
                 ],
                 classPrefix: "has-",
                 "options": [
@@ -152,12 +154,39 @@ module.exports = function(grunt) {
             }
 
         },
+        /*
+        minifyHtml: {
+            options: {
+                cdata: true
+            },
+            dist: {
+                files: {
+                    'index.php': '_production/index.php', // destination file first, then source file
+                    'inc/modal_upload.php': '_production/includes/modal_upload.php'
+                }
+            },
+        },
+        */
+        htmlmin: { // Task
+            dist: { // Target
+                options: { // Target options
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    minifyJS:true,
+                    processConditionalComments:true,
+                },
+                files: { // Dictionary of files
+                    'index.php': '_production/index.php', // destination file first, then source file
+                    'inc/modal_upload.php': '_production/includes/modal_upload.php'
+                }
+            }
+        },
 
         svgmin: {
             options: {
                 plugins: [
                     { removeXMLProcInst: false },
-                    { removeViewBox: false }, 
+                    { removeViewBox: false },
                     { removeUselessStrokeAndFill: false }
                 ]
             },
@@ -204,20 +233,21 @@ module.exports = function(grunt) {
                 files: ['_production/modules/*.js', '_production/modules/modals/*.js'],
                 tasks: ['jsStuff'],
             },
-            html: {
-                files: ['*.html', '*.php'],
+            includes: {
+                files: ['inc/*.php'],
+                tasks: ['jsStuff'],
+            },
+            php: {
+                files: ['_production/index.php','_production/includes/*.php'],
+                tasks: ['phprebuild'],
                 options: {
                     livereload: true,
                 }
-            },
-            includes: {
-                files:['inc/*.php'],
-                tasks:['jsStuff'],
             }
         },
         clean: {
             build: {
-                src: ['_production/sass/css','_production/svgs/compressed'] //
+                src: ['_production/sass/css', '_production/svgs/compressed'] //
             },
         },
         jshint: {
@@ -242,15 +272,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-grunticon');
     grunt.loadNpmTasks("grunt-modernizr");
     grunt.loadNpmTasks('grunt-contrib-sass');
+    //grunt.loadNpmTasks('grunt-minify-html');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+
 
     // Default task(s).
-    grunt.registerTask('default', ['sass', 'postcss', 'cssmin', 'concat', 'uglify', 'clean', 'jshint']); // order matters here!
+    grunt.registerTask('default', ['sass', 'postcss', 'cssmin', 'concat', 'uglify', 'clean', 'jshint', 'htmlmin']); // order matters here!
     grunt.registerTask('icons', ['svgmin', 'grunticon', 'clean']); // order matters here!
     //grunt.registerTask('icons', ['grunticon']);
     grunt.registerTask('dist', ['modernizr']); // order matters here!
     grunt.registerTask('scss', ['sass']);
     grunt.registerTask('cssStuff', ['sass', 'postcss', 'cssmin', 'clean']);
     grunt.registerTask('jsStuff', ['concat', 'uglify', 'clean', 'jshint']);
+    grunt.registerTask('phprebuild',['htmlmin']);
 
 
 };

@@ -1,6 +1,6 @@
 <?php
 $subject = 'Files were uploaded to Oakcreek Printing!';
-$to = 'jparks@journalstar.com';
+$to = 'sales@oakcreekprinting.com';
 $empty = "This field was left blank. \r\n";
 $phone = $_POST['ubizphone'];
 $company = $_POST["ubizname"];

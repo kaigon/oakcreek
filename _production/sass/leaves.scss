@@ -9,6 +9,7 @@
     margin: 0 auto 0;
     background-position: center;
     bottom:-18px;
+    z-index: 10;
 }
 
 @include media('>sm') {

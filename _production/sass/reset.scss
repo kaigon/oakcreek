@@ -25,30 +25,6 @@ button {
 }
 
 
-/*
-a,
-.btn-trans.btn-link {
-    text-decoration: none;
-    color: $bright-tan;
-    &:link {
-        color: $bright-tan;
-    }
-    &:visited {
-        color: $bright-tan;
-    }
-    &:after {
-        content: '';
-        display: block;
-        width: 0%;
-        height: 2px;
-        background-color: $bright-green;
-        transition: all 400ms ease;
-    }
-    &:hover:after {
-        width: 100%;
-    }
-}
-*/
 
 a {
     display: inline-block;
@@ -92,8 +68,8 @@ img {
     max-width: 86rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     height: 100%;
 }
 

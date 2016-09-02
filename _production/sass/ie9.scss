@@ -1,0 +1,25 @@
+@import 'colors',
+'include-media';
+.ie9 {
+    #ajax-contact,
+    [data-scrollto],
+    .guidelines footer {
+        display: none;
+    }
+    .hero h3:after {
+        content: '';
+        width: 25px;
+        height: 25px;
+        background-size: contain;
+        display: block;
+        border-left: 3px solid;
+        border-bottom: 3px solid;
+        transform: rotate(-45deg);
+        margin-left: 0.5rem;
+        border-color: #A8D30D;
+        margin-top: 0.5em;
+    }
+    .contact footer {
+        margin-top: 2em;
+    }
+}
