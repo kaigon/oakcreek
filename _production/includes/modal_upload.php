@@ -42,7 +42,7 @@
                                 <li>.pdf</li>
                                 <li>.jpg</li>
                                 <li>.png</li>
-                                <li>.tif</li>
+                                <!--<li>.tif</li>-->
                                 <li>.zip</li>
                                 <li>.rar</li>
                             </ul>
@@ -61,7 +61,7 @@
                                 <input type="file" id="fileupload1" class="hidden" name="my_field[]" value="" />
                                 <ul id="files" class="files ul-list"></ul>
                             </article>
-                            <h2><span class="hidden-xs">Drag &amp; drop or</span> <label class="drop_area--label">click</label> to upload</h2>
+                            <h2><span class="hidden-xs">Drag &amp; drop or&nbsp;</span><label class="drop_area--label">click</label>&nbsp;to upload</h2>
                             <p>Maximum allowable file size is 40mb. Please contact us for info regarding submitting larger files.</p>
                             <input type="hidden" name="action" value="multiple" />
                            

@@ -1,4 +1,6 @@
-var acceptable = ['eps', 'pdf', 'tif', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
+var oak_filesemail = 'mweixelman@journalstar.com';
+var oak_filesphone = '402.473.7442';
+var acceptable = ['eps', 'pdf', 'zip', 'rar', 'jpeg', 'jpg', 'png'];
 var maxSize = 40000000;
 var exists, oops;
 var dropit = $('.label-upload');
@@ -46,7 +48,7 @@ var myDropzone = new Dropzone("#upload_files", { // Make the whole body a dropzo
     parallelUploads: maxFiles,
     previewTemplate: li,
     maxFilesize: (maxSize / 1000000),
-    acceptedFiles: ".eps, .pdf, .tif, .zip, .rar, .jpeg, .jpg, .png",
+    acceptedFiles: ".eps, .pdf, .zip, .rar, .jpeg, .jpg, .png",
 });
 
 
@@ -192,8 +194,8 @@ myDropzone
     .on("error", function(file, response) {
         var ext = file.name.split('.').pop().toLowerCase();
         var _this = this;
-        console.log(file);
-        console.log(response);
+        //console.log(file);
+        //console.log(response);
         if ($.inArray(ext, acceptable) === -1) {
             // file is wrong extension. throw errors
             exists = $('#upload_files .alert-filetype');
@@ -239,15 +241,16 @@ myDropzone
             $(notify).find('h1 > span').text('Uh oh!');
             $(notify).find('h4').text('An error has occurred!');
             $(notify).find('p').text("We're sorry, we could not upload your files at this time. Please contact us directly and we will assist you with delivering your files to our creative team another way.");
+            //var tel_phone = oak_filesphone.replace(/\./g, '');
             var r = '';
             r += '<ul class="ul-list contact">';
             r += '<li>';
             r += '<i class="icon-phone"></i>';
-            r += '<a href="tel:4024737375">402.473.7375</a>';
+            r += '<a href="tel:'+(oak_filesphone.replace(/\./g, ''))+'">'+oak_filesphone+'</a>';
             r += '</li>';
             r += '<li>';
             r += '<i class="icon-email"></i>';
-            r += '<a href="mailto:sales@oakcreekprinting.com" target="_blank">sales@oakcreekprinting.com</a>';
+            r += '<a href="mailto:'+oak_filesemail+'" target="_blank">'+oak_filesemail+'</a>';
             r += '</li>';
             r += '</ul>';
             $(notify).append(r);
@@ -265,10 +268,10 @@ myDropzone
             })
             .done(function(response) {
                 // Clear the form.
-                console.log(response);
+                //console.log(response);
             })
             .fail(function(response) {
-                console.log('failed! ' + response);
+                //console.log('failed! ' + response);
             }); // end ajax
 
     });

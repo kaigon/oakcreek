@@ -1,6 +1,8 @@
 <?php
+    include 'inc/email_addresses.php'; 
+
     $subjectline = 'Oakcreek Contact Form submission from: ';
-    $my_email = 'sales@oakcreekprinting.com';
+    $my_email = $oak_salesemail;
 	//$my_email = 'ddymacek@journalstar.com';
     // My modifications to mailer script from:
     // http://blog.teamtreehouse.com/create-ajax-contact-form
@@ -40,7 +42,8 @@
         $email_content .= "\nMessage:\n$message\n";
 
         // Build the email headers.
-        $email_headers = "From: $name <$email>";
+        $email_headers = "From: $name <$email>" . "\r\n";
+        $email_headers .= "BCC: $oak_bbcemail " . "\r\n";
 
         // Send the email.
         if (mail($recipient, $subject, $email_content, $email_headers)) {

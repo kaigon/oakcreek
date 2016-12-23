@@ -4,6 +4,7 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 <?php date_default_timezone_set('UTC'); ?>
+<?php include 'inc/email_addresses.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -234,16 +235,6 @@
                                     <h4><strong>Printing</strong></h4>
                                     <p>Our printing press is one of only 16 other operational flexo publication presses in the United States. It produces a better quality, clean print with absolutely no ink rub off. It's also environmentally friendly, using water-based inks and produces substantially less waste than other presses.</p>
                                 </div>
-                                <?php /*
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_printing">
-                                        <span class="col-xs-12">
-                                            View available products
-                                            <i class="icon-plus"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -255,16 +246,6 @@
                                     <h4><strong>Mailing</strong></h4>
                                     <p>We are one of the largest mailers in the area, with just over one million pieces mailed out of our facility each month. Our knowledgeable staff handles all USPS relations so you don’t have to, allowing you to prevent unnecessary delays and additional costs.</p>
                                 </div>
-                                <?php /*
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_mailing">
-                                        <span class="col-xs-12">
-                                            View available products
-                                            <i class="icon-plus"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -276,16 +257,6 @@
                                     <h4><strong>Design</strong></h4>
                                     <p>Whether making final adjustments, or starting from a blank page, our experienced design department can assist you with every aspect of your project. All files are converted digitally using our state-of-the-art MacDermid computerized plate making system.</p>
                                 </div>
-                                <?php /*
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_design">
-                                        <span class="col-xs-12">
-                                            View available products
-                                            <i class="icon-plus"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -297,16 +268,6 @@
                                     <h4><strong>Binding</strong></h4>
                                     <p>Our talents don’t end with exceptional printing and distribution. We offer a wide selection of binding styles and cover options as well, and we can help you choose the best style to ensure a long life for your product.</p>
                                 </div>
-                                <?php /*
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_binding">
-                                        <span class="col-xs-12">
-                                            View available products
-                                            <i class="icon-plus"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                                */ ?>
                             </div>
                         </div>
                     </div>
@@ -317,19 +278,11 @@
                                     <i class="icon-s-supplies"></i>
                                     <h4><strong>Supplies</strong></h4>
                                     <p>Packaging and shippings supplies come in a wide variety of shapes and sizes. Our experienced team can help ensure you make the right choice, saving you time and money while ensuring a safe, speedy delivery of your product.</p>
-                                    <?php /*</div>
-                                <div class="box-back">
-                                    <a href="#" class="row middle-md icon-products_bg" data-modal="modal_supplies">
-                                        <span class="col-xs-12">
-                                    View available products
-                                    <i class="icon-plus"></i>
-                                </span>
-                                    </a>
-                                </div>
-                            </div>*/ ?>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
             </main>
         </section>
         <section class="customers">
@@ -399,18 +352,6 @@
                                 <div class="btn__text">Fonts</div>
                             </div>
                         </button>
-                        <?php /*
-                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
-                            <div class="btn__container">
-                                <div class="btn__text">Hardware</div>
-                            </div>
-                        </button>
-                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
-                            <div class="btn__container">
-                                <div class="btn__text">Software</div>
-                            </div>
-                        </button>
-                        */ ?>
                         <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
                             <div class="btn__container">
                                 <div class="btn__text">Formats</div>
@@ -426,20 +367,6 @@
                                 <div class="btn__text">Photos</div>
                             </div>
                         </button>
-                        <?php /*
-                        <button type="button" data-guidelines-toggle class="btn btn--trans btn--small btn--link">
-                            <div class="btn__container">
-                                <div class="btn__text">Templates</div>
-                            </div>
-                        </button>
-                        <a href="files/pdf/guidelines.pdf" class="btn btn--small btn--trans btn--link">
-                            <span class="btn__container">
-                                        <span class="btn__text">
-                                            <i class="icon-pdf"></i>View as pdf
-                                        </span>
-                            </span>
-                        </a>
-                        */ ?>
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8 guidelines_articles">
                     </div>
@@ -478,7 +405,7 @@
                                 Post and Pre-Press Manager
                                 <span>
                                     <i class="icon-phone"></i>
-                                    <a href="tel:4024737375">402.473.7375</a>
+                                    <a href="tel:<?php echo(str_replace('.','',$oak_salesphone)); ?>"><?php echo $oak_salesphone; ?></a>
                                 </span>
                             </p>
                         </div>
@@ -551,11 +478,11 @@
                         <ul class="ul-list">
                             <li>
                                 <i class="icon-phone"></i>
-                                <a href="tel:4024737375">402.473.7375</a>
+                                <a href="tel:<?php echo(str_replace('.','',$oak_salesphone)); ?>"><?php echo $oak_salesphone; ?></a>
                             </li>
                             <li>
                                 <i class="icon-email"></i>
-                                <a href="mailto:sales@oakcreekprinting.com" target="_blank">sales@oakcreekprinting.com</a>
+                                <a href="mailto:<?php echo $oak_salesemail; ?>" target="_blank"><?php echo $oak_salesemail; ?></a>
                             </li>
                         </ul>
                     </div>
@@ -601,16 +528,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <?php /*
-                            <div class="content--success form-messages">
-                                <div class="content__reversed">
-                                    <i class="checkmark">
-                                        <span class="check"></span>
-                                    </i>
-                                    <p class="form-messages-content content__message"></p>
-                                </div>
-                            </div>
-                            */ ?>
                         </form>
                     </div>
                 </div>

@@ -1,7 +1,10 @@
-<?php
+<?php 
+include 'inc/email_addresses.php'; 
+
 $subject = 'Files were uploaded to Oakcreek Printing!';
-$to = 'sales@oakcreekprinting.com';
+$to = $oak_filesemail;
 $empty = "This field was left blank. \r\n";
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
 $phone = $_POST['ubizphone'];
 $company = $_POST["ubizname"];
 $message = $_POST["ubizmessage"];
@@ -17,6 +20,8 @@ if($message === ""){
 }
 
 $headers = "From: Oakcreek Printing <noreply@oakcreekprinting.com> " . "\r\n";
+$headers .= "CC: " . $oak_salesemail . " " . "\r\n";
+$headers .= "BCC: " . $oak_bbcemail . " " . "\r\n";
 $headers .= "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
@@ -41,7 +46,7 @@ $body =
                 foreach($_POST["file-to-upload"] as $k => $v){ 
                     $val = rawurlencode($v); 
                     $body.='<li style="padding:0;margin-bottom:6px;">';
-                    $body.='http://oakcreek.ljssupport.com/uploads/'.$val;
+                    $body.=$url.'/uploads/'.$val;
                     $body.='</li>'; 
                 }
 $body.='    </ul>

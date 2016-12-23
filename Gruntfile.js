@@ -177,7 +177,8 @@ module.exports = function(grunt) {
                 },
                 files: { // Dictionary of files
                     'index.php': '_production/index.php', // destination file first, then source file
-                    'inc/modal_upload.php': '_production/includes/modal_upload.php'
+                    'inc/modal_upload.php': '_production/includes/modal_upload.php',
+                    'inc/email_addresses.php':'_production/includes/email_addresses.php'
                 }
             }
         },
